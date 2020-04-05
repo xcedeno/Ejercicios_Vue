@@ -8,9 +8,14 @@
     -b, --bare                      Sin isntrucciones para principiantes
 ```
 
+```bash
+vue create ejemplo1 -dnm yarn
+```
+
 ```js
 "production":"vue-cli-service build --modern"
 ```
+
 ```bash
 npx http-server ./dist/
 ```
