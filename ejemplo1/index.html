@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Data binding JS_puro / VueJS</title>
 </head>
 <body>
     <div id="app">
@@ -11,7 +11,14 @@
         <input type="text">
     </div>
     <script>
-        
+        //data bind con js puro
+        //ahora con VueJS, se utiliza la directiva v-model
+        const input = document.querySelector("input");
+        const h1 = document.querySelector("h1");
+
+        input.addEventListener("keyup", ()=> {
+            h1.innerHTML = input.value;
+        });
     </script>
 </body>
 </html>
