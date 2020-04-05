@@ -19,3 +19,10 @@ vue create ejemplo1 -dnm yarn
 ```bash
 npx http-server ./dist/
 ```
+
+## Libreria Accounting.js
+
+[Repositorio:](http://openexchangerates.github.io/accounting.js/)
+
+[CDN:](https://raw.githubusercontent.com/openexchangerates/accounting.js/master/accounting.js)
+
