@@ -1,17 +1,6 @@
-# general
+.DS_Store
 node_modules
-.DS_Store
 /dist
-
-# carpeta 2
-ejemplo2/node_modules
-.DS_Store
-ejemplo2/dist
-
-# carpeta 3
-ejemplo3/node_modules
-.DS_Store
-ejemplo3/dist
 
 # local env files
 .env.local
