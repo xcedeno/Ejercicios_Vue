@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue"></script>
+  <title>Usando Componentes</title>
+  <style>
+    #app {
+        background-image: url('https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: green;
+    }
+    .arreglo {
+        color: green;
+        font-size: 1.5em;
+        padding: 0.5em;
+    }
+    .arreglo img {
+        border-radius: 50%;
+        width: 100px;
+        vertical-align: middle;
+        margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Lista de Personajes</h1>
+        <componente-personajes></componente-personajes>
+  </div>
+  <script>
+    Vue.component("componente-personajes", {
+      template: `
+        <div class="arreglo">
+          <div v-for="(personas,index) in personajes" :key="index">
+            <img :src="personas.src" :alt="index">
+            <span v-text="personas.nombre"></span>
+          </div>  
+        </div>
+      `,
+      data(){
+        return {
+          personajes: [
+              {nombre: "Rick Sanchez", src:"https://rickandmortyapi.com/api/character/avatar/1.jpeg"},
+              {nombre: "Morty Smith", src:"https://rickandmortyapi.com/api/character/avatar/2.jpeg"},
+              {nombre: "Summer Smith", src:"https://rickandmortyapi.com/api/character/avatar/3.jpeg"},
+              {nombre: "Beth Smith", src:"https://rickandmortyapi.com/api/character/avatar/4.jpeg"},
+              {nombre: "Jerry Smith", src:"https://rickandmortyapi.com/api/character/avatar/5.jpeg"},
+              {nombre: "Abadango Cluster Princess", src:"https://rickandmortyapi.com/api/character/avatar/6.jpeg"},
+              {nombre: "Abradolf Lincler", src:"https://rickandmortyapi.com/api/character/avatar/7.jpeg"},
+          ]
+        }
+      },
+    })
+    var app = new Vue({
+      el: '#app'
+    });
+  </script>
+</body>
+</html>
