@@ -3,6 +3,11 @@ node_modules
 .DS_Store
 /dist
 
+# carpeta 1_2
+ejemplo1_2/node_modules
+.DS_Store
+ejemplo1_2/dist
+
 # carpeta 2
 ejemplo2/node_modules
 .DS_Store
