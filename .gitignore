@@ -18,6 +18,11 @@ ejemplo3/node_modules
 .DS_Store
 ejemplo3/dist
 
+# carpeta 4
+ejemplo4/node_modules
+.DS_Store
+ejemplo4/dist
+
 # local env files
 .env.local
 .env.*.local
