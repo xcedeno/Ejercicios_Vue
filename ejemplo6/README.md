@@ -1,4 +1,6 @@
-# ejemplo6
+# Lista de Tareas usando Props, metodos, eventos, directivas
+
+En este ejemplo se pasan las actividades creadas del padre al hijo para ser mostradas, y desde el hijo se pueden eliminan las activadades.
 
 ## Project setup
 ```
