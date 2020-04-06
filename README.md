@@ -12,6 +12,10 @@
 vue create ejemplo1 -dnm yarn
 ```
 
+```bash
+vue init simple nombre_proyecto
+```
+
 ```js
 "production":"vue-cli-service build --modern"
 ```
