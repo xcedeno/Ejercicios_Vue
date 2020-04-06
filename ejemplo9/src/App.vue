@@ -53,17 +53,14 @@ export default {
         alert("Debe ingresar un nombre valido en el campo")
       }
     },
-    pikachu(){
-      fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
-      .then(respuesta => respuesta.json())
-      .then(datos => {
+    pikachu: async function () {
+      let respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu");
+      let datos = await respuesta.json();
           this.pokemones = datos;
           this.pokeHabilidad = datos.abilities;
           this.pokeMove = datos.moves;
           this.activo = true;
-      })
-      .catch(error => console.error(error))
-    }
+      }
   },
   components: {
     PokeGuia
