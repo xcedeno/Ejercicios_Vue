@@ -20,7 +20,7 @@ vue create ejemplo1 -dnm yarn
 npx http-server ./dist/
 ```
 
-## Libreria Accounting.js
+## Libreria para monedas: Accounting.js
 
 [Repositorio:](http://openexchangerates.github.io/accounting.js/)
 
@@ -30,4 +30,13 @@ npx http-server ./dist/
 npm i accounting
 yarn add accounting
 ```
+## Libreria para Fechas: [moment.js](https://momentjs.com/)
 
+[Repositorio:](https://github.com/moment/moment/)
+[CDN:](https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.js)
+[Web](https://momentjs.com/)
+
+```bash
+npm i moment
+yarn add moment
+```

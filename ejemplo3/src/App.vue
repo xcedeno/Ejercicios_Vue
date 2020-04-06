@@ -15,6 +15,8 @@
         </tr>
       </tbody>
     </table>
+    <hr>
+    <p>La versión 1.0 de VueJS fue lanzada el: <span>{{fecha | fechas}}</span></p>
   </div>
 </template>
 
@@ -32,9 +34,11 @@ export default {
         {nombre: "TV", precio:"150"},
         {nombre: "PC", precio:"670"},
         {nombre: "Tableta", precio:"178"},
-      ]
+      ],
+      fecha: "2015-10-27"
     }
   },
+  //filtros locales
   filters: {
     moneda:(valor)=>{
       console.log(valor);

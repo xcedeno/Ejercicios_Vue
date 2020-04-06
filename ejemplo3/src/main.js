@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import moment from 'moment'
 
 Vue.config.productionTip = false
 
@@ -18,6 +19,9 @@ Vue.filter("mayusculas2", (texto2)=>{
   console.log(primeraLetra);
   console.log(restoLetras);
   return primeraLetra.toUpperCase() + restoLetras.join('');
+});
+Vue.filter("fechas", (valor)=>{
+  return moment(valor).format('LLL');
 });
 
 new Vue({
