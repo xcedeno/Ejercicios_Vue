@@ -38,6 +38,11 @@ ejemplo8/node_modules
 .DS_Store
 ejemplo8/dist
 
+# carpeta 9
+ejemplo9/node_modules
+.DS_Store
+ejemplo9/dist
+
 # local env files
 .env.local
 .env.*.local
