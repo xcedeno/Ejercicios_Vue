@@ -1,4 +1,4 @@
-# ejemplo1_2
+# VueJS Basico sin directivas.
 
 ## Project setup
 ```

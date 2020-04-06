@@ -1,4 +1,4 @@
-# ejemplo2
+# Utilizando metodos
 
 ## Project setup
 ```

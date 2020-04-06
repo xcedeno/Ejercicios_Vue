@@ -1,4 +1,4 @@
-# ejemplo3
+# Utilizando Filtros Globales y Locales
 
 ## Project setup
 ```
