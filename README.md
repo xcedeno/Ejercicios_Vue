@@ -26,3 +26,8 @@ npx http-server ./dist/
 
 [CDN:](https://raw.githubusercontent.com/openexchangerates/accounting.js/master/accounting.js)
 
+```bash
+npm i accounting
+yarn add accounting
+```
+
