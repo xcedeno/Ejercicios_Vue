@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Sitio Web utilizando Vue Router</h1>
+    <p>
+      <router-link to="/inicio">Inicio</router-link>
+      <router-link to="/contacto">Contato</router-link>
+    </p>
+    <router-view></router-view>
+  </div>
+  <script>
+    const Inicio = {
+      template: `
+        <div>
+          <p>Página de inicio</p>
+        </div>
+      `
+    };
+    const Contacto = {
+      template: `
+        <div>
+          <p>Página de Contacto</p>
+        </div>
+      `
+    };
+    const routes = [
+      {
+        path: '/inicio',
+        component: Inicio
+      },
+      {
+        path: '/contacto',
+        component: Contacto
+      }      
+    ];
+    const router = new VueRouter({
+      routes
+    })
+    let app = new Vue({
+      el: '#app',
+      router
+    });
+  </script>
+</body>
+</html>
