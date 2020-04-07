@@ -1,4 +1,6 @@
-# ejemplo10
+# Imagen desde API
+
+En este ejemplo se trae una imagen desde una API, la cual, se configura previamente por el usuario de acuerdo a los parámetros seleccionados.
 
 ## Project setup
 ```

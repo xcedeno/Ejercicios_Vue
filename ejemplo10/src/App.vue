@@ -4,11 +4,11 @@
       <h1>Random Git Cat</h1>
     </div>
     <div class="formulario">
-      <label for="">
+      <label for="titulo">
         Titulo: <input type="text" v-model="titulo">
       </label>
       <label for="filtro">Filtro
-        <select name="filtro" id="filtro" v-model="filtro">
+        <select v-model="filtro">
           <option value="blur">blur</option>
           <option value="mono">mono</option>
           <option value="sepia">sepia</option>
@@ -18,13 +18,14 @@
         </select>
       </label>
       <label for="color">Color
-        <select name="color" id="color" v-model="color">
+        <select v-model="color">
           <option value="red">Rojo</option>
           <option value="blue">Azul</option>
           <option value="green">Verde</option>
           <option value="yellow">Amarillo</option>
           <option value="white">Blanco</option>
         </select>
+        <span class="circulo" :style="{backgroundColor: color}"></span>
       </label>
       <label for="">
           Tamaño<input type="number" v-model="medida">
@@ -32,7 +33,7 @@
     </div>
     <div class="muestra">
       <button @click.prevent="buscar">Mostrar Gato</button>
-      <componente-imagen :src="buscarURL"/>
+      <componente-imagen :src="buscarURL" v-if="activo"/>
     </div>
   </div>
 </template>
@@ -44,19 +45,20 @@ export default {
   name: 'App',
   data() {
     return {
-      titulo: "Escribe el nombre",
+      titulo: "Escribe una palabra corta",
       color: "blue",
       medida: "300",
       filtro: "blur",
       resultado: [],
+      activo: false
     }
   },
   methods: {
     buscar(){
-      console.log("entro");
       fetch(`https://cataas.com/cat/gif/says/${this.titulo}?filter=${this.filtro}&color=${this.color}&size=${this.medida}`)
       .then(respuesta => {
           this.resultado = respuesta;
+          this.activo = true
         })
       .catch(error => console.error(error));
     }
@@ -101,5 +103,13 @@ export default {
     padding: 10px;
     background: rgba(136, 162, 216, 0.795);
     height: auto;
+  }
+  .circulo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
   }
 </style>
