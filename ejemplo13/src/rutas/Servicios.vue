@@ -1,6 +1,7 @@
 <template>
     <div class="servicios">
         <h1>Página de Servicios</h1>
+        <p>Nombre de la ruta actual: {{ $route.name }}</p>
         <p>Llegando desde App por medio de rutas</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias aspernatur eligendi vel recusandae odio explicabo ipsum. Accusantium illum iure dignissimos veniam veritatis, natus similique atque numquam soluta, provident, odio adipisci.Tempora possimus in similique tempore laborum aliquam officia est ex sed! Ratione, esse nemo sit expedita ipsa tenetur, ducimus, architecto doloremque repellat error hic facere minus officia magnam velit iusto!</p>
     </div>

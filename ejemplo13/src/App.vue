@@ -2,9 +2,12 @@
   <div id="app">
     <h1>Utilizando Vue-Router con Vue-Cli</h1>
     <nav>
-      <router-link to="/">Inicio |</router-link>
-      <router-link to="/servicios"> Servicios |</router-link>
-      <router-link to="/contacto"> Contacto</router-link>
+      <ul>
+        <li><router-link to="/">Inicio</router-link></li>
+        <li><router-link to="/servicios">Servicios</router-link></li>
+        <li><router-link to="/blog/1">Blog</router-link></li>
+        <li><router-link :to="{ name: 'contacto' }">Contacto</router-link></li>
+      </ul>
     </nav>
     <router-view></router-view>
   </div>
