@@ -5,48 +5,53 @@ node_modules
 
 # carpeta 1_2
 ejemplo1_2/node_modules
-.DS_Store
+ejemplo1_2/.DS_Store
 ejemplo1_2/dist
 
 # carpeta 2
 ejemplo2/node_modules
-.DS_Store
+ejemplo2/.DS_Store
 ejemplo2/dist
 
 # carpeta 3
 ejemplo3/node_modules
-.DS_Store
+ejemplo3/.DS_Store
 ejemplo3/dist
 
 # carpeta 4
 ejemplo4/node_modules
-.DS_Store
+ejemplo4/.DS_Store
 ejemplo4/dist
 
 # carpeta 5
 ejemplo5/node_modules
-.DS_Store
+ejemplo5/.DS_Store
 ejemplo5/dist
 
 # carpeta 6
 ejemplo6/node_modules
-.DS_Store
+ejemplo6/.DS_Store
 ejemplo6/dist
 
 # carpeta 8
 ejemplo8/node_modules
-.DS_Store
+ejemplo8/.DS_Store
 ejemplo8/dist
 
 # carpeta 9
 ejemplo9/node_modules
-.DS_Store
+ejemplo9/.DS_Store
 ejemplo9/dist
 
 # carpeta 10
 ejemplo10/node_modules
-.DS_Store
+ejemplo10/.DS_Store
 ejemplo10/dist
+
+# carpeta 11
+ejemplo11/node_modules
+ejemplo11/.DS_Store
+ejemplo11/dist
 
 # local env files
 .env.local
