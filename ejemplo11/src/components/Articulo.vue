@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- CONTENIDO PARA LA VISTA DE POST -->
     <header class="masthead" style="background-image: url('/assets/img/chevrolet-blazer.jpg');">
       <div class="overlay"></div>
       <div class="container">

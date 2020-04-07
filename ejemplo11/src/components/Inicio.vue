@@ -1,9 +1,6 @@
 <template>
   <div>
-    <header
-      class="masthead"
-      style="background-image:url('assets/img/home-bg.jpg');"
-    >
+    <header class="masthead" style="background-image:url('assets/img/home-bg.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -24,9 +21,7 @@
               <h2 class="post-title">
                 <strong>Chevrolet presenta la totalmente nueva Blazer</strong>
               </h2>
-              <h3 class="post-subtitle">
-                Llega&nbsp;como la primera SUV deportiva de la marca
-              </h3>
+              <h3 class="post-subtitle">Llega&nbsp;como la primera SUV deportiva de la marca</h3>
             </router-link>
           </div>
           <hr />
@@ -39,22 +34,22 @@
           <div class="col-md-10 col-lg-8 mx-auto">
             <ul class="list-inline text-center">
               <li class="list-inline-item">
-                <span class="fa-stack fa-lg"
-                  ><i class="fa fa-circle fa-stack-2x"></i
-                  ><i class="fa fa-twitter fa-stack-1x fa-inverse"></i
-                ></span>
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
               </li>
               <li class="list-inline-item">
-                <span class="fa-stack fa-lg"
-                  ><i class="fa fa-circle fa-stack-2x"></i
-                  ><i class="fa fa-facebook fa-stack-1x fa-inverse"></i
-                ></span>
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
               </li>
               <li class="list-inline-item">
-                <span class="fa-stack fa-lg"
-                  ><i class="fa fa-circle fa-stack-2x"></i
-                  ><i class="fa fa-github fa-stack-1x fa-inverse"></i
-                ></span>
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
               </li>
             </ul>
             <p class="text-muted copyright">Copyright&nbsp;©&nbsp;V8 - 2018</p>
