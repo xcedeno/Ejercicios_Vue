@@ -3,6 +3,7 @@
     <h1>Utilizando Vue-Router con Vue-Cli</h1>
     <nav>
       <router-link to="/">Inicio |</router-link>
+      <router-link to="/servicios"> Servicios |</router-link>
       <router-link to="/contacto"> Contacto</router-link>
     </nav>
     <router-view></router-view>
