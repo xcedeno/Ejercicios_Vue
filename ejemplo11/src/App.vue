@@ -8,7 +8,7 @@
                 <ul class="nav navbar-nav ml-auto" id="menu-v8">
                     <li class="nav-item" role="presentation">
                       <!-- REEMPLAZAR CON ELEMENTO ROUTER LINK A CON RUTA NOMBRADA -->
-                      <a href="/">portada</a> 
+                      <router-link to="/">Portada</router-link> 
                     </li>
                     <li class="nav-item" role="presentation">
                       <!-- REEMPLAZAR CON ELEMENTO ROUTER LINK A CON RUTA NOMBRADA -->
@@ -23,19 +23,17 @@
                       <a href="/post/1">último post</a> 
                     </li>
                 </ul>
-        </div>
+            </div>
         </div>
     </nav>
     <!-- ROUTER VIEW QUE CARGARÁ LAS VISTAS (INICIO, SOBRE MÍ, CONTACTO, ETC.) -->
-    <!-- <router-view></router-view> -->
+    <router-view></router-view>
   </div>
-  
 </template>
 
 <script>
-
 export default {
-
+  name: 'App'
 }
 </script>
 
