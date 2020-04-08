@@ -125,3 +125,9 @@ npm -i vuex --save
 ```bash
 yarn add vuex
 ```
+
+* Utilizar mapState, mapGetters
+
+```javascript
+import {mapState, mapGetters} from 'vuex'
+```
