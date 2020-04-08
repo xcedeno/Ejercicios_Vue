@@ -82,3 +82,46 @@ o
 yarn add --dev @babel/plugin-syntax-dynamic-import
 ```
 
+## Instalando Vue-Router
+
+* Sitio oficial:
+    [Vue-Router](https://router.vuejs.org/)
+
+* Usando el CDN o descarga del archivo:
+    [CDN/descarga](https://unpkg.com/vue-router/dist/vue-router.js)
+
+    ```javascript
+      <script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"></script>
+    ```
+
+* Instalacion con NPM:
+```bash
+npm i --save vue-router
+```
+
+* Instalacion con Yarn:
+```bash
+yarn add vue-router
+```
+
+## Instalando Vuex
+
+* Sitio oficial:
+    [Vuex](https://vuex.vuejs.org/),
+
+* Usando el CDN o descarga del archivo:
+    [CDN/descarga](https://unpkg.com/vuex)
+
+    ```javascript
+      <script src="https://unpkg.com/vuex@3.1.3/dist/vuex.js"></script>
+    ```
+
+* Instalacion con NPM:
+```bash
+npm -i vuex --save
+```
+
+* Instalacion con Yarn:
+```bash
+yarn add vuex
+```
