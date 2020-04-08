@@ -66,3 +66,19 @@ yarn add bootstrap jquery popper.js
     import 'bootstrap'; 
     import 'bootstrap/dist/css/bootstrap.min.css';
   ```
+
+## Uso de Babel - plugin-syntax-dynamic-import
+
+Esta dependencia permitirá trabajar e implementar desde VueJS las Lazy Loading Routes en conjunto con Vue-Router.
+
+[Documentación Oficial para Vue-Router](https://router.vuejs.org/guide/advanced/lazy-loading.html#grouping-components-in-the-same-chunk)
+[Documentación oficial para babel:](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import/).
+
+Instalacion de la dependencia: 
+
+```bash
+npm install --save-dev @babel/plugin-syntax-dynamic-import
+o
+yarn add --dev @babel/plugin-syntax-dynamic-import
+```
+
