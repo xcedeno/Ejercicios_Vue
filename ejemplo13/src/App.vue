@@ -6,6 +6,8 @@
         <li><router-link to="/">Inicio</router-link></li>
         <li><router-link to="/servicios">Servicios</router-link></li>
         <li><router-link to="/blog/1">Blog</router-link></li>
+        <li><router-link to="/demo">Demo</router-link></li>
+        <li><router-link to="/demo2">Demo2</router-link></li>
         <li><router-link :to="{ name: 'contacto' }">Contacto</router-link></li>
       </ul>
     </nav>
