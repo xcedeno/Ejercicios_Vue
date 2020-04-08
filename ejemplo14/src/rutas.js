@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Portada from './components/Inicio.vue';
-import Contacto from './components/Contacto.vue';
+const Portada = ()=> import('./components/Inicio.vue');
+const Contacto = ()=> import('./components/Contacto.vue');
 import NotFound from './components/NotFound.vue';
 import Articulo from './components/Articulo.vue';
-import SobreMi from './components/SobreMi.vue';
-import Post from './components/Post.vue';
+const SobreMi = ()=> import('./components/SobreMi.vue');
+const Post = ()=> import('./components/Post.vue');
+import Administrador from './components/Administrador.vue';
 
 Vue.use(Router);
 
@@ -20,7 +21,14 @@ export default new Router ({
         {
             path: '/contacto',
             name: 'Contacto',
-            component: Contacto
+            component: Contacto,
+            alias: ['/contactame']
+        },
+        {
+            path: '/administrador/:id',
+            name: 'Administrador',
+            component: Administrador,
+            props: true
         },
         {
             path: '/post',
@@ -37,7 +45,20 @@ export default new Router ({
         {
             path: '/sobremi',
             name: 'SobreMi',
-            component: SobreMi
+            component: SobreMi,
+            alias: ['/acerca']
+        },
+        {
+            path: '/home',
+            redirect: '/'
+        },
+        {
+            path: '/portada',
+            redirect: '/'
+        },
+        {
+            path: '/inicio',
+            redirect: '/'
         },
         {
             path: '*',
