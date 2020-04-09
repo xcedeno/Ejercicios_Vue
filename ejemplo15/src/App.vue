@@ -27,12 +27,32 @@
         </li>
       </ul>
       <p v-else>...</p>
+      <hr>
+      <p>
+        <label v-text="ocupado"></label>
+        <input type="button" value="Cambiar el estado" @click="modificandoOcupado">
+      </p>
+      <hr>
+      <hr>
+      <p>
+        <label v-text="creditos"></label>
+        <input type="button" value="Cambiar el estado" @click="modificandoCredito">
+      </p>
+      <hr>
+      <h3>Productos</h3>
+      <ul>
+        <li v-for="(item, index) in todosLosProductos" :key="index">
+          <span>{{item.id}} |  {{item.name}} |  {{item.stock}} | {{item.precio}} |</span>
+          <button @click="agregandoStock(item.id)">+</button> 
+          <button @click="actualizarVentaProducto(item)">Vender</button>
+        </li>
+      </ul>
   </div>
 </template>
 
 <script>
-// En compilaciones completas, los ayudantes se exponen como Vuex.mapState
-import {mapState, mapGetters} from 'vuex'
+// se llaman de esta forma porque son objetos de vuex
+import {mapState, mapGetters, mapMutations} from 'vuex';
 
 export default {
   name: 'App',
@@ -41,12 +61,24 @@ export default {
       buscarID: ""
     }
   },
+  methods: {
+    ...mapMutations(['modificandoOcupado']),
+    agregandoStock(productoEnviado){
+      this.$store.commit('agregandoStock',productoEnviado);
+    },
+    modificandoCredito(){
+      this.$store.dispatch('modificandoCredito');
+    },
+    actualizarVentaProducto(productoVendido){
+      this.$store.dispatch('actualizarVentaProducto',productoVendido)
+    }
+  },
   computed: {
     titulo(){
       return "Almecen Web";
     },
     ...mapGetters([
-      'productosConCantidad',
+      'productosConCantidad'
     ]),
     productosConCantidadBaratos(){
       return this.$store.getters.productosConCantidadBaratos;
@@ -55,9 +87,11 @@ export default {
       return this.$store.getters.productoPorId(this.buscarID);
     },
     ...mapState({
+      todosLosProductos(state){
+        return state.productos;
+      },
       ocupado(){
         // Al proporcionar la opción de tienda a la instancia raíz, la tienda se inyectará en todos los componentes secundarios de la raíz y estará disponible en ellos como this.$store
-        console.log(this.$store.state.ocupado);
         let ocupado = this.$store.state.ocupado ? "Ocupado":"Disponible";
         return `Estado: ${ocupado}`;
       },
