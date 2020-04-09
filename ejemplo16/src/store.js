@@ -12,18 +12,21 @@ const store = new Vuex.Store({
             {codigo: "0004", nombre: "Mario Tennis Aces", stock: "100", precio: "35000", color: "yellow", destacado: "false"},
             {codigo: "0005", nombre: "Bloodborne", stock: "100", precio: "10000", color: "blue", destacado: "false"},
             {codigo: "0006", nombre: "Forza Horizon 4", stock: "100", precio: "20000", color: "red", destacado: "true"},
-        ]
+        ],
+        titulo: "32bits",
+        subtitulo: "Juegos de PC y consolas"
     },
     getters: {
-        cantidadDeJuegos: state => {
-            return state.juegos.filter((juego)=>{return juego.stock > 0})
+        cantidadDeJuegosTotalesStock: state => {
+            return state.juegos.filter((juego,)=>{return juego.stock > 0})
         },
         busquedaJuegos: (state,getters) => (id) => {
-            return getters.cantidadDeJuegos.filter((numero)=>{return numero.codigo == id})
+            return getters.cantidadDeJuegosTotalesStock.filter((numero)=>{return numero.codigo == id})
+        },
+        juegosDisponibles: state => {
+            return state.juegos.length;
         }
     },
-    mutations: {},
-    actions: {}
 });
 
 export default store;
