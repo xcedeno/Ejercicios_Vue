@@ -52,7 +52,7 @@
 
 <script>
 // se llaman de esta forma porque son objetos de vuex
-import {mapState, mapGetters, mapMutations} from 'vuex';
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex';
 
 export default {
   name: 'App',
@@ -63,11 +63,9 @@ export default {
   },
   methods: {
     ...mapMutations(['modificandoOcupado']),
+    ...mapActions(['modificandoCredito']),
     agregandoStock(productoEnviado){
       this.$store.commit('agregandoStock',productoEnviado);
-    },
-    modificandoCredito(){
-      this.$store.dispatch('modificandoCredito');
     },
     actualizarVentaProducto(productoVendido){
       this.$store.dispatch('actualizarVentaProducto',productoVendido)

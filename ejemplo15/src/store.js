@@ -47,12 +47,8 @@ const store = new Vuex.Store({
         venderProducto: (state,productoVendido) => {
             state.productos.forEach((produc)=>{
                 if (produc.id == productoVendido.id) {
-                    if (productoVendido.stock > 0) {
                         produc.stock--;
                         state.totalVentas += parseFloat(productoVendido.precio);
-                    } else {
-                        alert("No existe inventario para vender el producto");
-                    }
                 }
             })
         },
@@ -61,26 +57,27 @@ const store = new Vuex.Store({
         modificandoCredito: context => {
             context.commit('modificandoCredito');
         },
-        actualizarVentaProducto(context,productoVendido) {
-            context.dispatch('ventaConPromesa',productoVendido).then(()=>{
+        async actualizarVentaProducto(context,productoVendido) {
+            await context.dispatch('ventaConPromesa',productoVendido).then(()=>{
                 alert("Venta exitosa")
             }).catch(()=>{
-                console.log("Error de venta por inventario")
+                alert("No existe inventario para vender el producto");
             })
         },
-        ventaConPromesa(context,productoVendido){
-            return new Promise((si,no) => {
-                let resultado = false;
-                if (productoVendido.stock > 0) {
-                    context.commit('venderProducto',productoVendido)
-                    resultado = true;
-                }
-                if (resultado) {
-                    si();
-                }else {
-                    no();
-                }
-                
+        async ventaConPromesa(context,productoVendido){
+            return await new Promise((si,no) => {
+                setTimeout(()=>{
+                    let resultado = false;
+                    if (productoVendido.stock > 0) {
+                        context.commit('venderProducto',productoVendido)
+                        resultado = true;
+                    }
+                    if (resultado) {
+                        si();
+                    }else {
+                        no();
+                    }
+                },8000)
             })
         }
     }
