@@ -35,6 +35,12 @@ npm i accounting
 o
 yarn add accounting
 ```
+* Uso:
+  ```javascript
+    import accounting from 'accounting';
+    accounting.formatMoney(valor)
+  ```
+
 ## Libreria para Fechas: [moment.js](https://momentjs.com/)
 
 * [Repositorio](https://github.com/moment/moment/).
