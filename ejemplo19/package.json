@@ -19,7 +19,7 @@
   },
   "name": "ejemplo19",
   "version": "1.0.0",
-  "description": "Ejemplos con watcher",
+  "description": "Ejemplo basico completo",
   "main": "index.js",
   "author": "JuanDuran85",
   "license": "MIT",

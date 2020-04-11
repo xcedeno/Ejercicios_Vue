@@ -1,6 +1,6 @@
 <template>
   <div>
-
+      <h1>Listado de Utilies</h1>
   </div>
 </template>
 
@@ -9,11 +9,8 @@ export default {
     name: 'App',
     data() {
         return {
-            
+
         }
-    },
-    watch: {
-        
     },
 }
 </script>
