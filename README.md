@@ -14,6 +14,10 @@ vue create ejemplo1 -dnm yarn
 
 ```bash
 vue init simple nombre_proyecto
+vue init webpack-simple nombre_proyecto
+npm install -g npm-check-updates
+ncu
+ncu -u
 ```
 
 ```js
