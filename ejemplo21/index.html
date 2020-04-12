@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <h1 v-text="titulo"></h1>
+    <hr>
+    <componente1></componente1>
+    <hr>
+    <componente2></componente2>
+    <hr>
+    <componente3 inline-template>
+      <div>
+        <p @click="mostrar">Template 3 - componente 3</p>
+        <p v-text="titulo"></p>
+      </div>
+    </componente3>
+    <hr>
+  </div>
+  <script>
+    let variable1 = `
+        <div>
+          <p>Template 1 - componente 1</p>
+          <p>{{mensaje}}</p>
+        </div>
+    `;
+
+    let ejem1 = Vue.extend({
+      template: variable1,
+      data() {
+        return {
+          mensaje:"Mensaje en componente 1"
+        }
+      },
+    });
+
+    let ejem2 = Vue.extend({
+      template: `
+        <div>
+          <p>Template 2 - componente 2</p>
+          <ul>
+            <componente4 v-for="(item,index) in lista" :key="index">{{item.nombre}}</componente4>  
+          </ul>
+        </div>`,
+        data() {
+          return {
+            lista: [
+              {id:1,nombre:"VueJS"},
+              {id:2,nombre:"Vue-Router"},
+              {id:3,nombre:"Vuex"},
+            ]
+          }
+        },
+    })
+
+    Vue.component('componente1', ejem1);
+    Vue.component('componente2', ejem2);
+    Vue.component('componente3', {
+      methods: {
+        mostrar(){
+          alert("Se hizo clic en el componente 3");
+        }
+      },
+      data() {
+        return {
+          titulo: "Componente 3"
+        }
+      },
+    });
+    Vue.component('componente4', {
+      template: `<li><slot></slot></li>`
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+       titulo: "Trabajando con componentes locales"
+      },
+    });
+  </script>
+</body>
+</html>
