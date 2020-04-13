@@ -141,3 +141,49 @@ yarn add vuex
 ```javascript
 import {mapState, mapGetters} from 'vuex'
 ```
+
+## Instalando Bootstrap-Vue
+
+Para trabajar con bootstrap-vue es necesario primero instalar bootstrap.
+
+* Sitio oficial:
+    [Bootstrap-Vue](https://bootstrap-vue.js.org/),
+
+* Usando el CDN o descarga del archivo:
+
+    ```html
+      <head>
+        <!-- Load required Bootstrap and BootstrapVue CSS -->
+        <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+        <!-- Load polyfills to support older browsers -->
+        <script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+        <!-- Load Vue followed by BootstrapVue, and BootstrapVueIcons -->
+        <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+        <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+        <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+      </head>
+    ```
+
+* Instalacion con NPM:
+```bash
+npm i bootstrap-vue
+```
+
+* Instalacion con Yarn:
+```bash
+yarn add bootstrap-vue
+```
+
+* utilizacion en el main.js o index.js
+  ```js
+    import 'bootstrap/dist/css/bootstrap.css';
+    import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+    import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+    // Install BootstrapVue
+    Vue.use(BootstrapVue)
+    // Optionally install the BootstrapVue icon components plugin
+    Vue.use(IconsPlugin)
+  ```
