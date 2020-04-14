@@ -19,7 +19,7 @@ export default {
     },
     data() {
         return {
-            arregloUsuario:['Juan','Elio','Yecenia','Petra','Josefina']
+            arregloUsuario:['Juan','Elio','Yecenia','Petra','Josefina'],
         }
     },
 }

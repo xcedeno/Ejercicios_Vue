@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
   const routes = [
   {
@@ -33,9 +33,23 @@ Vue.use(VueRouter)
   {
     path: '/signup',
     name: 'SignUp',
-    component: () => import('../views/SignUp.vue')
+    component: () => import('../views/SignUp.vue'),
+    alias: ['/registrarse']
   },
-
+  {
+    path: '/registro',
+    redirect: '/signup'
+  },
+  {
+    path: '/productos',
+    name: 'Productos',
+    component: () => import('../views/productos/Index.vue'),
+  },
+  {
+    path: '/productos-detalle/:id',
+    name: 'Producto',
+    component: () => import('../views/productos/Productos_Detalle.vue'),
+  }
 ]
 
 const router = new VueRouter({

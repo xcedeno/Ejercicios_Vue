@@ -1,18 +1,32 @@
 <template>
-  <div class="container">
-    <b-overlay :show="show" rounded="sm">
-      <b-card title="Card with overlay" :aria-hidden="show ? 'true' : null">
-        <b-card-text>Laborum consequat non elit enim exercitation cillum.</b-card-text>
-        <b-card-text>Click the button to toggle the overlay:</b-card-text>
-        <b-button :disabled="show" variant="primary" @click="show = true">
-          Show overlay
-        </b-button>
-      </b-card>
-    </b-overlay>
-    <b-button class="mt-3" @click="show = !show">Toggle overlay</b-button>
-    <div class="p-4">
-      <b-icon icon="clock" animation="spin" font-scale="4" shift-v="8"></b-icon>
-    </div>
+  <div class="container my-3">
+    <p>Registro de Usuario</p>
+    <b-form @reset="onReset" v-if="show">
+      <b-form-group
+        id="input-group-1"
+        label="Email address:"
+        label-for="input-1"
+        description="We'll never share your email with anyone else."
+      >
+        <b-form-input
+          id="input-1"
+          v-model="form.email"
+          type="email"
+          required
+          placeholder="Enter email"
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          v-model="form.name"
+          required
+          placeholder="Enter name"
+        ></b-form-input>
+      </b-form-group>
+      <b-button type="submit" variant="primary">Registrarse</b-button>
+      <b-button type="reset" variant="danger">Reset</b-button>
+    </b-form>
   </div>
 </template>
 
@@ -21,12 +35,25 @@ export default {
     name: 'SignUp',
     data() {
       return {
-        show: false
+          show: true,
+          form: {
+            email: '',
+            name: '',
+          },
+      }
+    },
+    methods: {
+      onReset(evt) {
+        evt.preventDefault()
+        // Reset our form values
+        this.form.email = ''
+        this.form.name = ''
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
       }
     },
 }
 </script>
-
-<style>
-
-</style>
