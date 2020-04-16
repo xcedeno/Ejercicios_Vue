@@ -17,48 +17,43 @@
 
 <script>
 import Post from './Post.vue';
+import appService from '../app.service.js';
 
 export default {
     name: 'Category',
     data() {
         return {
-            posts: [
-                {
-                id: 1,
-                title: "post 1",
-                content:"sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-                },
-                {
-                id: 2,
-                title: "post 2",
-                content:"sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-                },
-                {
-                id: 3,
-                title: "post 3",
-                content:"sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-                },
-                {
-                id: 4,
-                title: "post 4",
-                content:"sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-                },
-                {
-                id: 5,
-                title: "post 5",
-                content:"sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-                },
-                {
-                id: 6,
-                title: "post 6",
-                content:"sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-                }
-            ]
+            id: this.$route.params.id,
+            postFron: [],
+            posts: [],
+            postMobile: []
         }
     },
     components: {
         Post
-    }
+    },
+    methods: {
+        loadPost(){
+            let categoryId = 2;
+            if (this.id == 'mobile') {
+                categoryId = 11;
+            };
+            appService.getPost(categoryId).then(data => {
+                this.posts = data
+            })   
+        }
+    },
+    watch: {
+        '$route' (to,from) {
+            this.id = to.params.id;
+            this.loadPost();
+        }
+    },
+    created() {
+        console.log(this.id);
+        this.loadPost();
+        console.log(this.$route.query.page);
+    },
 }
 </script>
 
