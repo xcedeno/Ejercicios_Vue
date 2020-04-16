@@ -187,3 +187,9 @@ yarn add bootstrap-vue
     // Optionally install the BootstrapVue icon components plugin
     Vue.use(IconsPlugin)
   ```
+
+## Utilizando Webpack, NodeJS y ExpressJS
+
+```bash
+node ./node_modules/webpack/bin/webpack --config ./build/webpack.config.js 
+```
