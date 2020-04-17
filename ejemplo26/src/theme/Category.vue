@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div class="container content">
-        <div class="columns is-multiline is-centered">
-            <div class="card espacios" v-for="(item, index) in posts" :key="index">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="card column is-12-mobile is-6-tablet is-4-desktop espacios" v-for="(item, index) in posts" :key="index">
                 <post :item="item">
-                    <p slot="title" class="card-header-title">{{item.title}}</p>
-                    <div slot="content" class="content">
-                        {{item.content}}
+                    <p slot="title" class="card-header-title">{{item.title.rendered}}</p>
+                    <div slot="content" class="content" v-html="item.content.rendered">
                     </div>
                 </post>
             </div>
@@ -59,7 +58,6 @@ export default {
 
 <style scope>
     .espacios {
-        margin: 10px;
-        padding: 0 10px;
+        border: 1px solid black;
     }
 </style>

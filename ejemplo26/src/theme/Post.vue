@@ -7,7 +7,7 @@
         <slot name="content"></slot>
     </div>
     <footer class="card-footer">
-        <a :href="item.link" target="_blank" class="card-footer-item">Leer +</a>
+        <a :href="item.rest_api_enabler.Link" target="_blank" class="card-footer-item">Leer +</a>
     </footer>
   </div>
 </template>
