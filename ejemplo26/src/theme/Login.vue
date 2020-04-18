@@ -1,5 +1,6 @@
 <template>
   <div>
+      <progress class="progress is-small is-primary" max="100" v-show="mostrarLog">15%</progress>
       <div v-if="getValueAutorizado">
           <h1>Bienvenido Usuario</h1>
           <!-- <p>Nombre: {{profile.firstName}}</p> -->
@@ -43,7 +44,8 @@ export default {
         return {
             username: '',
             password: '',
-            profile: {}
+            profile: {},
+            mostrarLog: false
         }
     },
     computed: {
@@ -52,10 +54,14 @@ export default {
     methods: {
         ...mapActions(['close']),
         login(){
+            this.mostrarLog = true;
             this.$store.dispatch('login',{username: this.username, password: this.password,}).then(()=>{
                 this.username = '';
                 this.password = '';
-            })
+                this.mostrarLog = false;
+            }).catch(error => {
+                this.mostrarLog = false;
+            });
         },
     },
 /*     created() {

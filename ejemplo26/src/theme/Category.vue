@@ -1,5 +1,6 @@
 <template>
   <div>
+      <progress class="progress is-small is-primary" max="100" v-show="mostrar">15%</progress>
     <div class="container">
         <div class="columns is-multiline">
             <div class="card column is-12-mobile is-6-tablet is-4-desktop espacios" v-for="(item, index) in posts" :key="index">
@@ -25,7 +26,8 @@ export default {
             id: this.$route.params.id,
             postFron: [],
             posts: [],
-            postMobile: []
+            postMobile: [],
+            mostrar: false
         }
     },
     components: {
@@ -38,7 +40,8 @@ export default {
                 categoryId = 11;
             };
             appService.getPost(categoryId).then(data => {
-                this.posts = data
+                this.posts = data;
+                this.mostrar = false;
             })   
         }
     },
@@ -50,6 +53,7 @@ export default {
     },
     created() {
         console.log(this.id);
+        this.mostrar = true;
         this.loadPost();
         console.log(this.$route.query.page);
     },

@@ -7,25 +7,28 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        autorizado: false
+        autorizado: false,
     },
     getters: {
         getValueAutorizado: (state) => {
-            return state.autorizado
-        }
+            return state.autorizado;
+        },
     },
     actions: {
         close (context) {
             context.commit('close');
         },
         login (context, datos) {
-            return new Promise((resolve) => {
+            return new Promise((resolve,reject) => {
                 appServe.login(datos)
                     .then((data) => {
                         context.commit('login',data);
                         resolve();
                     })
-                    .catch(() => window.alert("No puede entrar"))
+                    .catch(() => {
+                        window.alert("No puede entrar");
+                        reject();
+                    })
             })
         }
     },
@@ -42,7 +45,7 @@ const store = new Vuex.Store({
                 window.localStorage.setItem('tokenExpiration',data.expiration);
             }
             state.autorizado = true;
-        }
+        },
     }
 });
 
