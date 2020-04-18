@@ -1,8 +1,8 @@
 <template>
   <div>
-      <div v-if="autorizado">
+      <div v-if="getValueAutorizado">
           <h1>Bienvenido Usuario</h1>
-          <p>Nombre: {{profile.firstName}}</p>
+          <!-- <p>Nombre: {{profile.firstName}}</p> -->
           <button @click.prevent="close" class="button is-primary is-hovered">Logout</button>
       </div>
       <div v-else>
@@ -35,8 +35,7 @@
 </template>
 
 <script>
-import appServe from '../app.service.js';
-import appService from '../app.service.js';
+import { mapGetters, mapActions } from "vuex";
 
 export default {
     name: 'Login',
@@ -44,46 +43,35 @@ export default {
         return {
             username: '',
             password: '',
-            autorizado: false,
             profile: {}
         }
     },
+    computed: {
+        ...mapGetters(['getValueAutorizado'])
+    },
     methods: {
+        ...mapActions(['close']),
         login(){
-            appServe.login(
-                {
-                    username: this.username,
-                    password: this.password,
-                }
-            )
-            .then((data) => {
-                window.localStorage.setItem('token',data.token);
-                window.localStorage.setItem('tokenExpiration',data.expiration);
-                this.autorizado = true;
+            this.$store.dispatch('login',{username: this.username, password: this.password,}).then(()=>{
                 this.username = '';
                 this.password = '';
             })
-            .catch(() => window.alert("No puede entrar"))
         },
-        close(){
-            this.autorizado = false;
-            window.localStorage.clear();
-        }
     },
-    created() {
+/*     created() {
         let expiration = window.localStorage.getItem('tokenExpiration');
         console.log(expiration);
         let tiempo = new Date().getTime() / 1000;
         console.log(tiempo);
         if (expiration !== null & parseInt(expiration) - tiempo > 0) {
-            this.autorizado = true;
+            //this.autorizado = true;
         }
-    },
+    }, */
     watch: {
-        autorizado(valor){
+/*         autorizado(valor){
             console.log(valor);
             if (valor) {
-                appService.getProfile()
+                appServe.getProfile()
                     .then(response => {
                         console.log(response);
                         this.profile = response;
@@ -92,7 +80,7 @@ export default {
             } else {
                 this.profile = {}
             }
-        }
+        } */
     },
 }
 </script>
