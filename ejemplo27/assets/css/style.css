@@ -5,7 +5,7 @@ body {
   }
   
   .nav-bar {
-    background: linear-gradient(-90deg, #84CF6A, #16C0B0);
+    background: linear-gradient(-90deg, rgb(106, 138, 207), rgb(22, 76, 192));
     height: 60px;
     margin-bottom: 15px;
   }
@@ -37,6 +37,7 @@ body {
     width: 40px;
     height: 40px;
     margin-top: 5px;
+    list-style: none;
   }
   
   .cart {
@@ -86,4 +87,9 @@ body {
   .activeTab {
     color: #16C0B0;
     text-decoration: underline;
+  }
+
+  .noInven {
+      color: red;
+      font-weight: 800;
   }
