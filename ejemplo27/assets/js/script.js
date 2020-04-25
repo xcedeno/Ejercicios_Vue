@@ -1,4 +1,4 @@
-Vue.component("componente1", {
+Vue.component("producto", {
     template: `
         <div>
             <div class="product">
@@ -11,11 +11,8 @@ Vue.component("componente1", {
                     <p v-if="variantes[seleccion].stock > 10">En Inventario</p>
                     <p v-else-if="variantes[seleccion].stock <= 10 && variantes[seleccion].stock > 0">Últimas unidades</p>
                     <p v-else :class="{noInven: stockZero}">Sin inventario</p>
-                    <ul>
-                        <li v-for="(datalle,index) in detalles" :key="index">
-                            {{datalle}}
-                        </li>
-                    </ul>
+                    <p>Envio: {{shipping}}</p>
+                    <detalles_producto :detalles="detalles"></detalles_producto>
                     <p>Variantes</p>
                     <ul>
                         <li v-for="(variante,index) in variantes" :key="index" @mouseover="cambioColor(index)" class="color-box" :style="{backgroundColor: variante.variantColor }">
@@ -28,7 +25,7 @@ Vue.component("componente1", {
                         </li>
                     </ul>
                     <button @click="comprar" type="button" :disabled="stockZero" :class="{disabledButton: stockZero}">Agregar al Carro</button>
-                    <button @click="quitar" type="button">Quitar del Carro</button>
+                    <venta_producto @quitarCarro="quitar"></venta_producto>
                     <div class="cart">
                         Cart:({{carro}})
                     </div>
@@ -65,6 +62,12 @@ Vue.component("componente1", {
             carro: 0
         }
     },
+    props: {
+        vip: {
+            type: Boolean,
+            required: true
+        }
+    },
     methods: {
         comprar(){
             let auxiliar2 = this.variantes.filter((valor)=>valor.variantImage == this.image);
@@ -96,10 +99,53 @@ Vue.component("componente1", {
     computed: {
         stockZero(){
             return this.variantes[this.seleccion].stock == 0;
+        },
+        shipping(){
+            if (this.vip) {
+                return 'Gratis'
+            } else {
+                return "4.000 CLP"
+            }
+        }
+    },
+});
+
+Vue.component("detalles_producto", {
+    template: `
+        <div>
+            <ul>
+                <li v-for="(datalle,index) in detalles" :key="index">
+                    {{datalle}}
+                </li>
+            </ul>
+        </div>
+    `,
+    props: {
+        detalles: {
+            type: Array,
+            required: true
+        }
+    }
+});
+
+Vue.component("venta_producto", {
+    template: `
+        <div>
+            <button @click="quitar" type="button">Quitar del Carro</button>
+        </div>
+    `,
+    methods: {
+        quitar(){
+            this.$emit("quitarCarro");
         }
     },
 });
 
 var app = new Vue({
     el: '#app',
+    data() {
+        return {
+            vip: true,
+        }
+    },
 });
