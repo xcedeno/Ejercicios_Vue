@@ -193,3 +193,20 @@ yarn add bootstrap-vue
 ```bash
 node ./node_modules/webpack/bin/webpack --config ./build/webpack.config.js 
 ```
+
+## Configurando e instalando FireBase
+
+Para trabajar con firebase debes tener una cuenta de Google, ir al sitio web oficial y crear un nuevo proyecto, haciendo clic en comenzar, luego en añadir proyecto, escribir el nombre del proyecto y seguir los pasos.
+
+* Sitio oficial:
+    [Firebase](https://firebase.google.com/)
+
+* Instalacion con NPM:
+```bash
+npm i firebase --save
+```
+
+* Instalacion con Yarn:
+```bash
+yarn add firebase -D
+```
