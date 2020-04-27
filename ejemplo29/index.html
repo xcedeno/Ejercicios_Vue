@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejemplos Basicos</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .cuadro {
+      width: 500px;
+      height: 500px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="cuadro" @mousemove="ubicacion"></div>
+    <p>X: {{x}} / Y: {{y}}</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        x: 0,
+        y: 0
+      },
+      methods: {
+        ubicacion(e){
+          this.x = e.clientX;
+          this.y = e.clientY;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
