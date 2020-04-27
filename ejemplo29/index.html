@@ -9,24 +9,48 @@
       height: 500px;
       background-color: aquamarine;
     }
+    .cuadrado2 {
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+    }
   </style>
 </head>
 <body>
   <div id="app">
-    <div class="cuadro" @mousemove="ubicacion"></div>
+    <div class="cuadro" @mousemove="ubicacion" @click="suma(x,y)" @mouseenter.once="entraMouse">
+      <div class="cuadrado2" @mousemove.stop></div>
+    </div>
     <p>X: {{x}} / Y: {{y}}</p>
+    <p>Distancia entre los puntos: [{{x}},{{y}}] = {{distancia}}</p>
+    <input type="text" @keyup.esc="salida" @keyup.alt.67="alternativa">
   </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
         x: 0,
-        y: 0
+        y: 0,
+        distancia: 0
       },
       methods: {
         ubicacion(e){
           this.x = e.clientX;
           this.y = e.clientY;
+        },
+        suma(x,y){
+          this.distancia = Math.sqrt(Math.pow(x,2)+Math.pow(y,2)).toFixed(2);
+        },
+        entraMouse(){
+          console.log('Solo se ejecuta una vez con once');
+        },
+        salida(){
+          alert('salio del input');
+          document.getElementsByTagName('input')[0].value = '';
+        },
+        alternativa(){
+          alert("se utilizo las teclas Alt+c");
         }
       }
     });
