@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Tareas Con Bootstrap-Vue</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    .terminada {
+      color: gray;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <div class="jumbotron">
+      <h1 v-text="titulo" class="text-center"></h1>
+      <div class="mt-4 input-group">
+          <input class="form-control" type="text" placeholder="Ingresa una nueva tarea" v-model="nuevaTarea" @keyup.enter="agregar">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-primary" @click="agregar">Agregar</button>
+          </span>
+      </div>
+      <div class="mt-3">
+        <ul class="list-group">
+          <li v-for="(item, index) in tareas" :key="index" class="list-group-item d-flex justify-content-between align-items-center" :class="{terminada: tareas[index].terminada}">{{item.texto}}<button @click="modificar(index)" type="button" class="btn btn-success button-sm"><span class="material-icons">done</span></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          titulo: "Lista de Tareas",
+          tareas: [
+            {texto: "Aprender VueJS", terminada: false},
+            {texto: "Aprender AngularJS", terminada: false},
+            {texto: "Aprender ReactJS", terminada: false}
+          ],
+          nuevaTarea: ''
+        }
+      },
+      methods: {
+        agregar(){
+          let tareaAux = this.nuevaTarea.trim();
+          if (tareaAux) {
+            this.tareas.push({texto: tareaAux,terminada:false});
+            this.nuevaTarea = '';
+          } else {
+            alert("Debe agregar una tarea");
+          }
+        },
+        modificar(index){
+          this.tareas[index].terminada = !this.tareas[index].terminada;
+        }
+      },
+    });
+  </script>
+</body>
+</html>
