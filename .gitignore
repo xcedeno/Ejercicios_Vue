@@ -128,6 +128,11 @@ ejemplo28/node_modules
 ejemplo28/.DS_Store
 ejemplo28/dist
 
+# carpeta 31
+ejemplo31/node_modules
+ejemplo31/.DS_Store
+ejemplo31/dist
+
 # local env files
 .env.local
 .env.*.local
