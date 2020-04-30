@@ -11,18 +11,24 @@
       </nav>
     </header>
     <main>
-      <HomePage/>
+      <!-- <HomePage/> -->
+      <br>
+      <hr>
+      <br>
+      <robot-builder></robot-builder>
     </main>
   </div>
 </template>
 
 <script>
-import HomePage from './components/HomePage.vue'
+//import HomePage from './home/HomePage.vue';
+import RobotBuilder from './constructor/RobotBuilder.vue';
 
 export default {
   name: 'App',
   components: {
-    HomePage
+    //HomePage,
+    RobotBuilder
   }
 }
 </script>
@@ -32,6 +38,10 @@ body {
   background: linear-gradient(to bottom, #555, #999);
   background-attachment: fixed;
 }
+</style>
+
+
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
