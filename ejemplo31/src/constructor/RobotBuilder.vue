@@ -6,31 +6,36 @@
                 <div class="titulo-robot">
                     {{nombreRobot}}<span v-if="onSale" class="vendido"> Vendido!!!</span>
                 </div>
-                <img :src="selectImgHeads" title="head"/>
+                <!-- <img :src="selectImg.heads" title="head"/> -->
+                <selector-partes :datos="dataParts.heads[this.seleccionHeads].src"></selector-partes>
                 <button @click="prevHead" class="prev-selector">&#9668;</button>
                 <button @click="nextHeads" class="next-selector">&#9658;</button>
             </div>
         </div>
         <div class="middle-row">
             <div class="left part">
-                <img :src="selectImgLeftArms" title="left arm"/>
+                <!-- <img :src="selectImg.armsLeft" title="left arm"/> -->
+                <selector-partes :datos="dataParts.arms[this.seleccionarmsleft].src"></selector-partes>
                 <button @click="prevarmleft" class="prev-selector">&#9650;</button>
                 <button @click="nextarmleft" class="next-selector">&#9660;</button>
             </div>
             <div class="center part">
-                <img :src="selectImgTorsos" title="left arm"/>
+                <!-- <img :src="selectImg.torsos" title="left arm"/> -->
+                <selector-partes :datos="dataParts.torsos[this.selecciontorsos].src"></selector-partes>
                 <button @click="prevtorso" class="prev-selector">&#9668;</button>
                 <button @click="nexttorsos" class="next-selector">&#9658;</button>
             </div>
             <div class="right part">
-                <img :src="selectImgRightArms" title="left arm"/>
+                <!-- <img :src="selectImg.armsRight" title="left arm"/> -->
+                <selector-partes :datos="dataParts.arms[this.seleccionarmsright].src"></selector-partes>
                 <button @click="prevarmsright" class="prev-selector">&#9650;</button>
                 <button @click="nextarmsright" class="next-selector">&#9660;</button>
             </div>
         </div>
         <div class="bottom-row">
             <div class="bottom part">
-                <img :src="selectImgBases" title="left arm"/>
+                <!-- <img :src="selectImg.bases" title="left arm"/> -->
+                <selector-partes :datos="dataParts.bases[this.seleccionbases].src"></selector-partes>
                 <button @click="prevbase" class="prev-selector">&#9668;</button>
                 <button @click="nextbases" class="next-selector">&#9658;</button>
             </div>
@@ -55,7 +60,8 @@
 
 <script>
 import dataParts from '../data/partes.js';
-import mixinComponentHoot from './mixinComponentHoot.js'
+import mixinComponentHoot from './mixinComponentHoot.js';
+import SelectorPartes from './SelectorPartes.vue'
 
 export default {
     name: 'RobotBuilder',
@@ -70,23 +76,11 @@ export default {
             carro: []
         }
     },
+    components: {
+      SelectorPartes  
+    },
     mixins: [mixinComponentHoot],
     computed: {
-        selectImgHeads(){
-            return dataParts.heads[this.seleccionHeads].src;
-        },
-        selectImgLeftArms(){
-            return dataParts.arms[this.seleccionarmsleft].src;
-        },
-        selectImgTorsos(){
-            return dataParts.torsos[this.selecciontorsos].src;
-        },
-        selectImgRightArms(){
-            return dataParts.arms[this.seleccionarmsright].src;
-        },
-        selectImgBases(){
-            return dataParts.bases[this.seleccionbases].src;
-        },
         nombreRobot(){
             return dataParts.heads[this.seleccionHeads].title;
         },
