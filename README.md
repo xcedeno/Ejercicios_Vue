@@ -69,7 +69,7 @@ yarn add moment
 ```bash
 npm i bootstrap jquery popper.js
 o
-yarn add bootstrap jquery popper.js
+yarn add bootstrap jquery popper.js @popperjs/core
 ```
 * utilizacion en el main.js o index.js
   ```js
