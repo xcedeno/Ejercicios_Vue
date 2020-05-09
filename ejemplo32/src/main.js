@@ -12,6 +12,15 @@ library.add(faTimes);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
+//servico para emitir eventos
+export var bus = new Vue({
+  methods: {
+    contando(numtareas){
+      this.$emit("contando",numtareas)
+    }
+  },
+});
+
 new Vue({
   render: h => h(App),
 }).$mount('#app');

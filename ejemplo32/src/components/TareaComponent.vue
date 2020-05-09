@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import {bus} from '../main.js';
+
 export default {
   name: 'TareaComponent',
   data() {
@@ -27,10 +29,15 @@ export default {
       if (recibido) {
         this.tareas.push({evento: recibido, terminada: false});
         this.tareaNueva = '';
+        //this.$emit("agregando",1);
+        bus.contando(this.tareas.length);
       } else {
         alert("Debe ingresar una tarea por realizar");
       }
     }
+  },
+  created() {
+    bus.contando(this.tareas.length);
   },
 }
 </script>
