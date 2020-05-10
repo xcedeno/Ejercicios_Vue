@@ -210,3 +210,34 @@ npm i firebase --save
 ```bash
 yarn add firebase -D
 ```
+## Aplicando FontAwesome
+
+Para utilizar la libreria de FontAwesome de manera local sin el CDN, se deben instalar las dependencias:
+
+* Instalacion con NPM:
+```bash
+$ npm i --save @fortawesome/fontawesome-svg-core
+$ npm i --save @fortawesome/free-solid-svg-icons
+$ npm i --save @fortawesome/vue-fontawesome
+```
+
+* Instalacion con Yarn:
+```bash
+yarn add @fortawesome/vue-fontawesome -D
+yarn add @fortawesome/free-solid-svg-icons -D
+yarn add @fortawesome/fontawesome-svg-core -D
+```
+
+* Sitio Oficial:
+    [Vue-Fontawesome](https://github.com/FortAwesome/vue-fontawesome)
+
+```javascript
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(faCheck);
+library.add(faTimes);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+```
