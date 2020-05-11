@@ -28,22 +28,22 @@ export default {
     TareaComponent,
     ListaTareas
   },
-  beforeCreate() {
+  created() {
+    bus.$on('contando',(dato)=>{
+      this.numtareas = dato;
+    }),
     db.collection('tareas').orderBy('creado').onSnapshot((resul)=>{
+      this.tareas = [];
+      this.numtareas = 0;
       resul.forEach(elementos =>{
         this.numtareas++;
-        console.log(elementos.data());
         this.tareas.push({
+          id: elementos.id,
           evento: elementos.data().evento,
           terminada: elementos.data().terminada
         })
       })
-    }) 
-  },
-  created() {
-    bus.$on('contando',(dato)=>{
-      this.numtareas = dato;
-    })  
+    })   
   },
 }
 </script>

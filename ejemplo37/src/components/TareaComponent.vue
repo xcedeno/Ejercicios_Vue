@@ -1,8 +1,8 @@
 <template>
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Agregar una tarea" aria-label="Agregar una tarea" aria-describedby="basic-addon2" @keyup.enter="agregar" v-model="tareaNueva">
+    <input type="text" class="form-control" placeholder="Agregar una tarea" aria-label="Agregar una tarea" aria-describedby="basic-addon2" @keyup.enter.prevent.stop="agregar" v-model="tareaNueva">
     <div>
-      <button class="btn btn-primary" id="basic-addon2" @click="agregar">Agregar</button>
+      <button class="btn btn-primary" id="basic-addon2" @click.prevent.stop="agregar">Agregar</button>
     </div>
   </div>
 </template>
@@ -28,18 +28,13 @@ export default {
     agregar(){
       var recibido = this.tareaNueva.trim();
       if (recibido) {
-        this.tareas.push({evento: recibido, terminada: false});
-        this.tareaNueva = '';
-        //this.$emit("agregando",1);
         bus.contando(this.tareas.length);
-
         db.collection('tareas').add({
           evento: recibido,
           terminada: false,
           creado: Date.now()
         }).then((response) => {
           if (response) {
-            console.log(response);
             this.tareaNueva = '';
           }
         }).catch((error)=>{
