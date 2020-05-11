@@ -23,6 +23,7 @@
     "bootstrap": "^4.4.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "firebase": "^7.14.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",

@@ -201,6 +201,9 @@ Para trabajar con firebase debes tener una cuenta de Google, ir al sitio web ofi
 * Sitio oficial:
     [Firebase](https://firebase.google.com/)
 
+* Documentación para JavaScript con Firestore.
+    [Firestore](https://firebase.google.com/docs/reference/js/firebase.firestore.Firestore)
+
 * Instalacion con NPM:
 ```bash
 npm i firebase --save
@@ -241,3 +244,29 @@ library.add(faTimes);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 ```
+
+## Instalando Axios
+
+* Sitio oficial:
+    [Axios](https://github.com/axios/axios),
+
+* Usando el CDN:
+
+    ```javascript
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      ```
+      o
+      ```javascript
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      ```
+
+* Instalacion con NPM:
+```bash
+npm install axios --save-dev
+```
+
+* Instalacion con Yarn:
+```bash
+yarn add axios -D
+```
+

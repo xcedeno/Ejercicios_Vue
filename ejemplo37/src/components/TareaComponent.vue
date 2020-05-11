@@ -9,6 +9,7 @@
 
 <script>
 import {bus} from '../main.js';
+import { db } from "../main.js";
 
 export default {
   name: 'TareaComponent',
@@ -31,6 +32,20 @@ export default {
         this.tareaNueva = '';
         //this.$emit("agregando",1);
         bus.contando(this.tareas.length);
+
+        db.collection('tareas').add({
+          evento: recibido,
+          terminada: false,
+          creado: Date.now()
+        }).then((response) => {
+          if (response) {
+            console.log(response);
+            this.tareaNueva = '';
+          }
+        }).catch((error)=>{
+          console.error(error);
+          this.errores = error;
+        });
       } else {
         alert("Debe ingresar una tarea por realizar");
       }

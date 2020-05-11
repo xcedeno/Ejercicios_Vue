@@ -13,6 +13,7 @@
 import TareaComponent from './components/TareaComponent.vue';
 import ListaTareas from './components/ListaTareas.vue';
 import { bus } from "./main.js";
+import { db } from "./main.js";
 
 export default {
   name: 'App',
@@ -20,21 +21,29 @@ export default {
     return {
       titulo: 'Lista de Tareas',
       numtareas: 0,
-      tareas: [
-        {evento: "Aprender VueJS", terminada: false},
-        {evento: "Aprender ReactJS", terminada: false},
-        {evento: "Aprender AngularJS", terminada: false}
-      ]
+      tareas: []
     }
   },
   components: {
     TareaComponent,
     ListaTareas
   },
+  beforeCreate() {
+    db.collection('tareas').orderBy('creado').onSnapshot((resul)=>{
+      resul.forEach(elementos =>{
+        this.numtareas++;
+        console.log(elementos.data());
+        this.tareas.push({
+          evento: elementos.data().evento,
+          terminada: elementos.data().terminada
+        })
+      })
+    }) 
+  },
   created() {
     bus.$on('contando',(dato)=>{
       this.numtareas = dato;
-    })    
+    })  
   },
 }
 </script>
