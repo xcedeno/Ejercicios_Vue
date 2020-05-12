@@ -168,6 +168,16 @@ ejemplo38/node_modules
 ejemplo38/.DS_Store
 ejemplo38/dist
 
+# carpeta 39
+ejemplo38/node_modules
+ejemplo38/.DS_Store
+ejemplo38/dist
+
+# carpeta 40
+ejemplo38/node_modules
+ejemplo38/.DS_Store
+ejemplo38/dist
+
 # local env files
 .env.local
 .env.*.local

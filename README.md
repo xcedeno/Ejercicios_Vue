@@ -270,3 +270,8 @@ npm install axios --save-dev
 yarn add axios -D
 ```
 
+Para usar a Axios, se debe importar en cada componente donde se desea implementar dentro del script:
+
+```javascript
+import axios from 'axios';
+```
