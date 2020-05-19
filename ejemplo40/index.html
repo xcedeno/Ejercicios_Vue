@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejempplo copn Slot</title>
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1 v-text="titulo"></h1>
+    <tarjeta class="row"></tarjeta>
+    <tarjeta class="row">
+      <img src="https://quantumdevop.com/wp-content/uploads/2019/04/vue-logo-1-740x414.png" alt="imag1" class="card-img-top">
+      <template slot="titulo">
+        <h5>Tarjeta 1</h5>
+      </template>
+      <template slot="texto">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt id atque ipsa laboriosam nobis autem iusto, explicabo, eveniet necessitatibus voluptatem distinctio veritatis sapiente natus esse animi culpa labore, ad nemo?</p>
+      </template>
+      <template slot="boton">
+        <a href="#" class="btn btn-primary">Ir al Sitio</a>
+      </template>
+    </tarjeta>
+    <personas :personal="personal">
+      <template scope="data">
+        <img :src="data.logo" class="card-img-top" alt="imagen por defecto">
+      </template>
+      <template slot="titulo" scope="data">
+        <h5>{{data.nombre}}</h5>
+      </template>
+      <template slot="texto" scope="data">
+        <h5>{{data.lema}}</h5>
+      </template>
+    </personas>
+  </div>
+  <template id="tarjeta">
+    <div class="card col-12 h-50 w-50 mx-2 my-2">
+      <slot>
+        <img src="https://miro.medium.com/max/3920/1*oZqGznbYXJfBlvGp5gQlYQ.jpeg" class="card-img-top" alt="imagen por defecto">
+      </slot>
+      <div class="card-body">
+        <slot name="titulo">Titulo por Defecto</slot>
+        <slot name="texto">Texto por Defecto</slot>
+        <slot name="boton">Clic Aqui</slot>
+      </div>
+    </div>
+  </template>
+  <template id="personas">
+    <div class="row">
+      <div v-for="(item, index) in personal" :key="index" class="card col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 h-50 w-50 mx-2 my-2">
+        <slot :logo="item.logo"></slot>
+        <div class="card-body">
+          <slot name="titulo" :nombre="item.nombre"></slot>
+          <slot name="texto" :lema="item.lema"></slot>
+          <slot name="boton">
+            <a href="#" class="btn btn-primary">Ir al Sitio</a>
+          </slot>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        titulo: "Trabajando con Slop",
+        personal: [
+          {
+            nombre: "Juan Duran",
+            logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRD_bXGdgWBbSvnKUVsa1ka5B4BdTsyTs6065hIBypCfhlcDour&usqp=CAU',
+            lema: "Lorem ipsum dolor sit amet"
+          },
+          {
+            nombre: "Pedro Perez",
+            logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS_DlOj0vb2OopKWLmt8hlRD-LKhdvycGiFym6oFCvFsAENwUh6&usqp=CAU',
+            lema: "consectetur adipisicing elit"
+          },
+          {
+            nombre: "Petra Delgado",
+            logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSC3DZmtZfBt1oGdIyxKaisj4pOo9RJCp3bGmKBNtQsLeufxdiQ&usqp=CAU',
+            lema: "Sunt id atque ipsa laboriosam nobis autem iusto"
+          }
+        ]
+      },
+      components: {
+        'tarjeta': {
+          template: '#tarjeta'
+        },
+        'personas': {
+          props: ['personal'],
+          template: '#personas'
+        }
+      }
+    });
+  </script>
+</body>
+</html>
