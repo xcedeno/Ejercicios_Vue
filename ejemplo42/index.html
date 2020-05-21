@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <todo-list :todos="todos"></todo-list>
+    <todo-add></todo-add>
+  </div>
+  <template id="todoList">
+    <ul>
+      <li v-for="(item, index) in todos" :key="index">{{item.texto}}</li>
+    </ul>
+  </template>
+  <template id="todoAdd">
+    <form @submit.prevent="agregarLista">
+      <input type="text" placeholder="Agregar una tarea" v-model="texto">
+      <button type="submit">Agregar</button>
+    </form>
+  </template>
+  <script>
+    const eventBus = new Vue(); 
+
+    Vue.component('todo-list', {
+      template: '#todoList',
+      props: ['todos'],
+      created() {
+        eventBus.$on('agreTarea',elem=>{
+          this.todos.push(elem);
+        })
+      }
+    });
+
+    Vue.component('todo-add', {
+      template: '#todoAdd',
+      data() {
+        return {
+          texto: ''
+        }
+      },
+      methods: {
+        agregarLista(){
+          if(this.texto){
+            let tareas = {
+              texto: this.texto
+            };
+            console.log(tareas);
+            eventBus.$emit('agreTarea', tareas);
+            this.texto = '';
+          }else{
+            alert("Debe ingresar un valor")
+          }
+        }
+      },
+    });
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        todos: [
+          {texto: 'Tarea 1'},
+          {texto: 'Tarea 2'},
+        ]
+      },
+    });
+  </script>
+</body>
+</html>
