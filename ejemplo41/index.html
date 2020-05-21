@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    :root {
+      --color-primary: #41B883;
+      --color-secondary: #35495E;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      font-family: sans-serif;
+      height: 100vh;
+    }
+    button {
+      padding: 10px 15px;
+      outline: 0;
+      width: 70%;
+      border: solid solid var(--color-primary);
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+      cursor: pointer;
+    }
+    #app {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .modal {
+      position: absolute;
+      padding: 2rem;
+      width: 50%;
+      min-height: 50vh;
+      background-color: rgba(65, 184, 131, .5);
+      color: (var(--color-secondary));
+    }
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.2s ease-out;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+    }
+    .blur {
+      filter: blur(1px);
+      opacity: .5;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div :class="[muestra ? blur : '']">
+      <h1>Eventos personalizados</h1>
+      <modal-boton @modalactive="toggleModal"></modal-boton>
+    </div>
+    <transition name="fade">
+      <ventana-modal v-if="muestra" class="modal">
+        <modal-boton @modalactive="toggleModal"></modal-boton>
+      </ventana-modal>
+    </transition>
+  </div>
+  <template id="venModal">
+    <div>
+      <h2>Ventana Modal</h2>
+      <slot></slot>
+    </div>
+  </template>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        muestra: false,
+        blur: 'blur'
+      },
+      methods: {
+        toggleModal(){
+          this.muestra = !this.muestra;
+        }
+      },
+      components: {
+        modalBoton: {
+          template: `
+            <div>
+              <button @click="abrirModal">Modal</button>
+            </div>
+          `,
+          methods: {
+            abrirModal(){
+              this.$emit('modalactive');
+            }
+          },
+        },
+        ventanaModal: {
+          template: '#venModal'
+        }
+      }
+
+    });
+  </script>
+</body>
+</html>
