@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router@3.2.0/dist/vue-router.js"></script>
+  <style>
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.4s ease-out;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>Trabajando con rutas en VueJS</h2>
+    <router-link to="/">Home</router-link>
+    <router-link to="/acerca">About</router-link>
+    <router-link to="/contacto">Contact</router-link>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
+
+  <script>
+    const Home = {
+      template: `
+        <div>
+          <h2>Home</h2>
+        </div>
+      `
+    }
+    const About = {
+      template: `
+        <div>
+          <h2>Acerca</h2>
+        </div>
+      `
+    }
+    const Contact = {
+      template: `
+        <div>
+          <h2>Contacto</h2>
+        </div>
+        `
+    }
+    const Error404 = {
+      template: `
+        <div>
+          <h2>Error 404</h2>
+        </div>
+      `
+    }
+
+    const routes = [
+      {
+        path: '/', 
+        component: Home 
+      },
+      {
+        path: '/acerca', 
+        component: About
+      },
+      {
+        path: '/contacto', 
+        component: Contact
+      },
+      {
+        path: '*', 
+        component: Error404
+      },
+    ];
+
+    const router = new VueRouter({
+      routes
+    });
+
+    var app = new Vue({
+      el: '#app',
+      router,
+    });
+  </script>
+</body>
+</html>
