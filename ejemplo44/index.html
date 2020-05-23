@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vuex@3.4.0/dist/vuex.js"></script>
+  <style>
+        :root {
+      --color-primary: #41B883;
+      --color-secondary: #35495E;
+    }
+
+    html {
+      font-family: sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      background: linear-gradient(180deg, var(--color-secondary), var(--color-primary));
+      color: #333;
+    }
+
+    a {
+      display: block;
+      margin: 1rem auto;
+      text-align: center;
+      color: var(--color-secondary);
+      transition: all .3s ease-out;
+    }
+
+    a:hover {
+      color: var(--color-primary);
+    }
+
+    .ToDo-container {
+      margin: auto;
+      padding: 1rem;
+      width: 24rem;
+      background-color: #FFF;
+      border-radius: .5rem;
+      box-shadow: 0 0 2rem rgba(0, 0, 0, .25);
+    }
+
+    .ToDo-title {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .ToDo-input {
+      width: 100%;
+      padding: .5rem;
+      font-size: 1rem;
+      outline: none;
+      border-radius: .25rem;
+      border: solid 1px #EEE;
+      box-sizing: border-box;
+    }
+
+    .ToDo-.tasks {
+      padding-left: 1.5rem;
+    }
+
+    .ToDo-task {
+      margin-bottom: .5rem;
+    }
+
+    .ToDo-task:hover {
+      cursor: pointer;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="ToDo-container">
+    <h1 class="ToDo-title">Lista de tareas con Vuex</h1>
+    <todo-add></todo-add>
+    <todo-list></todo-list>
+  </div>
+  <template id="temple_list">
+    <div>
+      <ul class="ToDo-tasks">
+        <li v-for="(item,index) in tareas" :key="index" @click="cambioTarea(item.id)" @dblclick="borrandoTarea(item.id)" class="ToDo-tasks" :class="{completed: item.completo}">
+          {{item.task}}
+        </li>
+      </ul>
+    </div>
+  </template>
+  <template id="addTarea">
+    <div>
+      <form @submit.prevent="addTodo">
+        <input class="ToDo-input" type="text" placeholder="Agrega una tarea" v-model="tarea">
+      </form>
+    </div>
+  </template>
+  <script>
+    const state = {
+      todos: [
+        {
+          id: 0,
+          task: 'Tarea 1',
+          completo: false
+        },
+        {
+          id: 1,
+          task: 'Tarea 2',
+          completo: false
+        },
+        {
+          id: 2,
+          task: 'Tarea 3',
+          completo: false
+        }
+      ]
+    };
+    const getters = {
+      getTodos: (state) => {
+        return state.todos;
+      }
+    };
+    const mutations = {
+      agregando: (state,tareaNueva)=>{
+        const nuevaTask = {
+          id: state.todos.length+1,
+          task: tareaNueva,
+          completo: false
+        };
+        state.todos.unshift(nuevaTask);
+      },
+      eliminando: (state,tareaEliminar) => {
+        let borrar = state.todos.findIndex(todo => todo.id == tareaEliminar);
+        state.todos.splice(borrar,1);
+      },
+      modificando: (state,tareaModifica)=>{
+        let lista = state.todos.find(todo => todo.id == tareaModifica);
+        lista.completo = !lista.completo;
+      }
+    };
+    const actions = {
+      agregarTarea: (context,tareaAgregar) => {
+        context.commit('agregando',tareaAgregar);
+      },
+      modificarTarea: (context,tareaModificar)=>{
+        context.commit('modificando',tareaModificar);
+      },
+      borrandoTarea: (context,tareaEliminar)=>{
+        context.commit('eliminando',tareaEliminar);
+      }
+    };
+
+    const store = new Vuex.Store({
+      state, 
+      getters, 
+      mutations, 
+      actions
+    });
+
+    Vue.component('todo-list', {
+      template:'#temple_list',
+      computed: {
+        tareas(){
+          console.log("propiedad computada");
+          return this.$store.getters.getTodos;
+        }
+      },
+      methods: {
+        cambioTarea(id){
+          this.$store.dispatch('modificarTarea',id);
+        },
+        borrandoTarea(id){
+          this.$store.dispatch('borrandoTarea',id);
+        }
+      },
+    });
+
+    Vue.component('todo-add', {
+      template: '#addTarea',
+      data() {
+        return {
+          tarea: ''
+        }
+      },
+      methods: {
+        addTodo(){
+          if (this.tarea) {
+            this.$store.dispatch('agregarTarea',this.tarea);
+          } else {
+            alert("Ingrese una actividad o tarea");
+          }
+        }
+      },
+    });
+
+    var app = new Vue({
+      el: '#app',
+      store,
+    });
+  </script>
+</body>
+</html>
