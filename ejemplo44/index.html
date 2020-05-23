@@ -5,7 +5,7 @@
   <script src="https://unpkg.com/vue"></script>
   <script src="https://unpkg.com/vuex@3.4.0/dist/vuex.js"></script>
   <style>
-        :root {
+    :root {
       --color-primary: #41B883;
       --color-secondary: #35495E;
     }
@@ -74,6 +74,7 @@
 
     .completed {
       text-decoration: line-through;
+      background-color: rgba(148, 41, 41, 0.151);
       color: #555;
     }
   </style>
@@ -191,6 +192,7 @@
         addTodo(){
           if (this.tarea) {
             this.$store.dispatch('agregarTarea',this.tarea);
+            this.tarea = '';
           } else {
             alert("Ingrese una actividad o tarea");
           }
