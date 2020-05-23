@@ -173,10 +173,15 @@ ejemplo39/node_modules
 ejemplo39/.DS_Store
 ejemplo39/dist
 
-# carpeta 40
-ejemplo40/node_modules
-ejemplo40/.DS_Store
-ejemplo40/dist
+# carpeta 43
+ejemplo43/node_modules
+ejemplo43/.DS_Store
+ejemplo43/dist
+
+# carpeta 45
+ejemplo45/node_modules
+ejemplo45/.DS_Store
+ejemplo45/dist
 
 # local env files
 .env.local
