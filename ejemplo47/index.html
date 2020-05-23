@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router@3.2.0/dist/vue-router.js"></script>
+  <style>
+    :root {
+      --color-primario: #41B883;
+      --color-secundario: #35495E;
+    }
+    .puntero {
+      cursor: pointer;
+    }
+    .router-link-active {
+      font-weight: bold;
+      color: var(--color-primario);
+    }
+    .router-exact-active {
+      padding-bottom: 0.25rem;
+      border-bottom: medium solid var(--color-secundario);
+    }
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.4s ease-out;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>Trabajando con rutas en VueJS</h2>
+    <p>Paramatro: {{parametro}}</p>
+    <ul class="puntero">
+      <router-link tag="li" to="/" exact>Home</router-link>
+      <router-link tag="li" to="/acerca" exact>About</router-link>
+      <router-link tag="li" to="/contacto" exact>Contact</router-link>
+    </ul>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
+
+  <script>
+    const Home = {
+      template: `
+        <div>
+          <h2>Home</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam libero laborum est repudiandae quam ducimus fugiat praesentium dolores obcaecati tempore sequi quibusdam provident, in iusto, voluptates nostrum voluptatem alias magnam.</p>
+        </div>
+      `
+    };
+    const About = {
+      template: `
+        <div>
+          <h2>Acerca</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam libero laborum est repudiandae quam ducimus fugiat praesentium dolores obcaecati tempore sequi quibusdam provident, in iusto, voluptates nostrum voluptatem alias magnam.</p>
+        </div>
+      `
+    };
+    const Contact = {
+      template: `
+        <div>
+          <h2>Contacto</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam libero laborum est repudiandae quam ducimus fugiat praesentium dolores obcaecati tempore sequi quibusdam provident, in iusto, voluptates nostrum voluptatem alias magnam.</p>
+        </div>
+        `
+    };
+    const Error404 = {
+      template: `
+        <div>
+          <h2>Error 404</h2>
+        </div>
+      `
+    };
+
+    const routes = [
+      {
+        path: '/', 
+        component: Home 
+      },
+      {
+        path: '/acerca', 
+        component: About
+      },
+      {
+        path: '/contacto', 
+        component: Contact
+      },
+      {
+        path: '*', 
+        component: Error404
+      },
+    ];
+
+    const router = new VueRouter({
+      routes
+    });
+
+    var app = new Vue({
+      el: '#app',
+      router,
+      computed: {
+        parametro(){
+          return this.$route.fullPath;
+        }
+      },
+    });
+  </script>
+</body>
+</html>
