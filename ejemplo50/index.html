@@ -34,7 +34,7 @@
     <p>Paramatro: {{parametro}}</p>
     <ul class="puntero">
         <li>
-            <router-link to="/" exact>Home</router-link>
+            <router-link to="/index.html" exact>Home</router-link>
         </li>
         <li>
             <router-link :to="{name: 'about'}" exact>About</router-link>
@@ -93,7 +93,7 @@
         `,
         created() {
           setTimeout(()=>{
-            this.$router.push('/'); //direcciona automaticamente a la ruta indicada
+            this.$router.push('/index.html'); //direcciona automaticamente a la ruta indicada
           },3500)
         },
     };
@@ -149,12 +149,7 @@
           <p>Valor de los Props sumados: {{resultado}}</p>
         </div>
         `,
-        props: {
-          resultado: {
-            type: String,
-            required: false,
-          }
-        }
+        props: ['resultado']
     };
     const UsuarioPublica = {
       template: `
@@ -173,58 +168,58 @@
 
     const routes = [
       {
-        path: '/', 
+        path: '/index.html', 
         component: Home,
         name: 'home'
       },
       {
-        path: '/inicio', 
-        redirect: '/'
+        path: '/index.html/inicio', 
+        redirect: '/index.html'
       },
       {
-        path: '/home',
+        path: '/index.html/home',
         redirect: {name: 'home'} 
       },
       {
-        path: '/acerca', 
+        path: '/index.html/acerca', 
         component: About,
         name: 'about'
       },
       {
-        path: '/personal', 
+        path: '/index.html/personal', 
         component: Personal,
         name: 'personal',
       },
       {
-        path: '/personal/:nombre', 
+        path: '/index.html/personal/:nombre', 
         component: Personal,
         props: true
       },
       {
-        path: '/estatico', 
+        path: '/index.html/estatico', 
         component: Estatico,
         props: {valor: 'Props Estatico'},
         name: 'estatico'
       },
       {
-        path: '/dinamico/:n1-:n2', 
+        path: '/index.html/dinamico/:n1-:n2', 
         component: Dinamico,
         props: suma,
         name: 'dinamico'
       },
       {
-        path: '/contacto', 
+        path: '/index.html/contacto', 
         component: Contact,
         name: 'contact',
-        alias: ['/contac','/contactos']
+        alias: ['index.html/contac','index.html/contactos']
       },
       {
-        path: '/usuarios', 
+        path: '/index.html/usuarios', 
         component: Usuarios,
         name: 'usuarios'
       },
       {
-        path: '/usuarios/:id', 
+        path: '/index.html/usuarios/:id', 
         components: {
           default: Usuarios,
           a: UsuarioPerfil,
@@ -246,6 +241,8 @@
     }
 
     const router = new VueRouter({
+      mode: 'history', //modo por defecto hash
+      base: '/ejemplo50/',
       routes
     });
 
