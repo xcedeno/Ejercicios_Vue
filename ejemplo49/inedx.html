@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Welcome to Vue</title>
+  <title>Rutas Nombradas</title>
   <script src="https://unpkg.com/vue"></script>
   <script src="https://unpkg.com/vue-router@3.2.0/dist/vue-router.js"></script>
   <style>
@@ -37,17 +37,17 @@
             <router-link to="/" exact>Home</router-link>
         </li>
         <li>
-            <router-link to="/acerca" exact>About</router-link>
+            <router-link :to="{name: 'about'}" exact>About</router-link>
         </li>
         <li>
-            <router-link to="/contacto" exact>Contact</router-link>
+            <router-link :to="{name: 'contact'}" exact>Contact</router-link>
         </li>
         <li>
-            <router-link to="/usuarios" exact>Usuarios</router-link>
+            <router-link :to="{name: 'usuarios'}" exact>Usuarios</router-link>
             <ul>
-                <li><router-link to="/usuarios/jd" exact>usuario JD</router-link></li>
+                <li><router-link :to="{name: 'usuario',params: {id: 'jd'}}" exact>usuario JD</router-link></li>
                 <ul>
-                    <li><router-link to="/usuarios/jd/perfil" exact>Perfil</router-link></li>
+                    <li><router-link :to="{name: 'perfil',params: {id: 'jd'}}" exact>Perfil</router-link></li>
                     <li><router-link to="/usuarios/jd/publicaciones" exact>Publicaciones</router-link></li>
                 </ul>
             </ul>
@@ -127,37 +127,45 @@
     const routes = [
       {
         path: '/', 
-        component: Home 
+        component: Home,
+        name: 'home'
       },
       {
         path: '/acerca', 
-        component: About
+        component: About,
+        name: 'about'
       },
       {
         path: '/contacto', 
-        component: Contact
+        component: Contact,
+        name: 'contact'
       },
       {
         path: '/usuarios', 
-        component: Usuarios
+        component: Usuarios,
+        name: 'usuarios'
       },
       {
         path: '/usuarios/:id', 
         component: Usuarios,
+        name: 'usuario',
         children: [
             {
                 path: 'perfil',
-                component: UsuarioPerfil
+                component: UsuarioPerfil,
+                name: 'perfil'
             },
             {
                 path: 'publicaciones',
-                component: UsuarioPublica
+                component: UsuarioPublica,
+                name: 'publicacion'
             }
         ]
       },
       {
         path: '*', 
-        component: Error404
+        component: Error404,
+        name: 'error'
       },
     ];
 
