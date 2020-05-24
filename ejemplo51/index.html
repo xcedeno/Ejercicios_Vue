@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trabajando con Vue-Router</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router@3.2.0/dist/vue-router.js"></script>
+  <style>
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.4s ease-out;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>Trabajando con rutas en VueJS</h2>
+    <router-link to="/">Home</router-link>
+    <router-link to="/acerca">About</router-link>
+    <router-link to="/contacto">Contact</router-link>
+    <router-link :to="{name: 'productos'}">Productos</router-link>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
+
+  <script>
+    const Home = {
+      template: `
+        <div>
+          <h2>Home</h2>
+        </div>
+      `,
+      beforeRouteEnter (to, from, next) {
+        alert(`Desde ${from.path}, para la ruta ${to.path}`);
+        next(); //si se agrega false no se mueva a la ruta, tambien se puede hacer redireccion en los guardias dde navegacion
+      }
+    };
+    const About = {
+      template: `
+        <div>
+          <h2>Acerca</h2>
+        </div>
+      `,
+      beforeRouteLeave (to, from, next) {
+        alert(`Desde: ${from.path}, hasta: ${to.path}`);
+        next();
+      }
+    };
+    const Contact = {
+      template: `
+        <div>
+          <h2>Contacto</h2>
+        </div>
+        `,
+      beforeRouteEnter (to, from, next) {
+        console.log(`Pasando de ${from.path} a ${to.path}`);
+        next('/servicio');
+      }
+    };
+    const Servicio = {
+      template: `
+        <div>
+          <h2>Ruta de servicio oculta</h2>
+        </div>
+        `
+    };
+    const Productos = {
+      template: `
+        <div>
+          <h2>Productos</h2>
+        </div>
+        `
+    };
+    const Error404 = {
+      template: `
+        <div>
+          <h2>Error 404</h2>
+        </div>
+      `
+    };
+
+    const routes = [
+      {
+        path: '/', 
+        component: Home 
+      },
+      {
+        path: '/acerca', 
+        component: About
+      },
+      {
+        path: '/contacto', 
+        component: Contact
+      },
+      {
+        path: '/servicio', 
+        component: Servicio,
+        name: 'servicio'
+      },
+      {
+        path: '/productos', 
+        component: Productos,
+        name: 'productos',
+        beforeEnter: (to, from, next) => {
+          if (confirm(`Antes de entrar a la ruta ${to.path} ¿Acepta ir?`)) {
+            next();
+          } else if (confirm("¿Vas a /servicios?")) {
+            next('/servicio');
+          } else {
+            next(false);
+          }
+        }
+      },
+      {
+        path: '*', 
+        component: Error404
+      },
+    ];
+
+    const router = new VueRouter({
+      routes
+    });
+
+    var app = new Vue({
+      el: '#app',
+      router,
+    });
+  </script>
+</body>
+</html>
