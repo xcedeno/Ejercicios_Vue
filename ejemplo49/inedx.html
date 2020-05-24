@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router@3.2.0/dist/vue-router.js"></script>
+  <style>
+    :root {
+      --color-primario: #41B883;
+      --color-secundario: #35495E;
+    }
+    .puntero {
+      cursor: pointer;
+    }
+    .router-link-active {
+      font-weight: bold;
+      color: var(--color-primario);
+    }
+    .router-exact-active {
+      padding-bottom: 0.25rem;
+      border-bottom: medium solid var(--color-secundario);
+    }
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.4s ease-out;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>Trabajando con rutas en VueJS</h2>
+    <p>Paramatro: {{parametro}}</p>
+    <ul class="puntero">
+        <li>
+            <router-link to="/" exact>Home</router-link>
+        </li>
+        <li>
+            <router-link to="/acerca" exact>About</router-link>
+        </li>
+        <li>
+            <router-link to="/contacto" exact>Contact</router-link>
+        </li>
+        <li>
+            <router-link to="/usuarios" exact>Usuarios</router-link>
+            <ul>
+                <li><router-link to="/usuarios/jd" exact>usuario JD</router-link></li>
+                <ul>
+                    <li><router-link to="/usuarios/jd/perfil" exact>Perfil</router-link></li>
+                    <li><router-link to="/usuarios/jd/publicaciones" exact>Publicaciones</router-link></li>
+                </ul>
+            </ul>
+        </li>
+    </ul>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
+
+  <script>
+    const Home = {
+      template: `
+        <div>
+          <h2>Home</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam libero laborum est repudiandae quam ducimus fugiat praesentium dolores obcaecati tempore sequi quibusdam provident, in iusto, voluptates nostrum voluptatem alias magnam.</p>
+        </div>
+      `
+    };
+    const About = {
+      template: `
+        <div>
+          <h2>Acerca</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam libero laborum est repudiandae quam ducimus fugiat praesentium dolores obcaecati tempore sequi quibusdam provident, in iusto, voluptates nostrum voluptatem alias magnam.</p>
+          <button @click="$router.go(-1)">Regresar</button>
+        </div>
+      `,
+
+    };
+    const Contact = {
+      template: `
+        <div>
+          <h2>Contacto</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam libero laborum est repudiandae quam ducimus fugiat praesentium dolores obcaecati tempore sequi quibusdam provident, in iusto, voluptates nostrum voluptatem alias magnam.</p>
+        </div>
+        `,
+        created() {
+          setTimeout(()=>{
+            this.$router.push('/'); //direcciona automaticamente a la ruta indicada
+          },3500)
+        },
+    };
+    const Usuarios = {
+      template: `
+        <div>
+          <h2>Usuarios</h2>
+          <h3 v-if="$route.params.id">Usuario ID: {{$route.params.id}}</h3>
+          <button @click="$router.go(1)">Adelante</button>
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </div>
+        `
+    };
+    const UsuarioPerfil = {
+      template: `
+        <div>
+          <h2>Perfil del Usuario</h2>
+        </div>
+        `
+    };
+    const UsuarioPublica = {
+      template: `
+        <div>
+          <h2>Publicaciones</h2>
+        </div>
+        `
+    };
+    const Error404 = {
+      template: `
+        <div>
+          <h2>Error 404</h2>
+        </div>
+      `
+    };
+
+    const routes = [
+      {
+        path: '/', 
+        component: Home 
+      },
+      {
+        path: '/acerca', 
+        component: About
+      },
+      {
+        path: '/contacto', 
+        component: Contact
+      },
+      {
+        path: '/usuarios', 
+        component: Usuarios
+      },
+      {
+        path: '/usuarios/:id', 
+        component: Usuarios,
+        children: [
+            {
+                path: 'perfil',
+                component: UsuarioPerfil
+            },
+            {
+                path: 'publicaciones',
+                component: UsuarioPublica
+            }
+        ]
+      },
+      {
+        path: '*', 
+        component: Error404
+      },
+    ];
+
+    const router = new VueRouter({
+      routes
+    });
+
+    var app = new Vue({
+      el: '#app',
+      router,
+      computed: {
+        parametro(){
+          return this.$route.fullPath;
+        }
+      },
+    });
+  </script>
+</body>
+</html>
