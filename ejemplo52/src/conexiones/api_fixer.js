@@ -20,19 +20,18 @@ export function monedaFixer() {
 }
 
 export function monedaOpenEx(base) {
-    axios.get(`${openexURL}?app_id=${api_id}&base=${base}`)
+    return axios.get(`${openexURL}?app_id=${api_id}&base=${base}`)
     .then(response => {
-        console.log(response);
-        fx.rates = response.data.rates;
-        fx.base = response.data.base;
-        console.log(fx.rates);
-        console.log(fx.base);
-        console.log(accounting.toFixed((fx(1000).from("USD").to("GBP")),2));
-        return response;
+        console.log(response.data);
+        return response.data.rates;
     })
     .catch(error => {
-        console.error(error)
+        console.error(error);
         return error;
     })
+}
+
+export function conversion(aConver,base,a) {
+    return accounting.toFixed((fx(aConver).from(base).to(a)),2)
 }
 
