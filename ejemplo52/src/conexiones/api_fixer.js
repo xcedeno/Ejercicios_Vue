@@ -22,8 +22,19 @@ export function monedaFixer() {
 export function monedaOpenEx(base) {
     return axios.get(`${openexURL}?app_id=${api_id}&base=${base}`)
     .then(response => {
-        console.log(response.data);
-        return response.data.rates;
+        let resultado = response.data.rates;
+        let moneda, valor; 
+        fx.rates = resultado;
+        fx.base = base;
+        let objetoMonedas = [];
+
+        for (const key in resultado) {
+            valor = resultado[key];
+            moneda = key;
+            objetoMonedas.push({monedaNombre: moneda, valorMoneda: valor});
+        }
+
+        return objetoMonedas;
     })
     .catch(error => {
         console.error(error);
@@ -32,6 +43,7 @@ export function monedaOpenEx(base) {
 }
 
 export function conversion(aConver,base,a) {
-    return accounting.toFixed((fx(aConver).from(base).to(a)),2)
+    let convertido = accounting.toFixed((fx(aConver).convert({from:base,to:a})),4)
+    return accounting.formatMoney(convertido, { symbol: a,  format: "%v %s" }); 
 }
 

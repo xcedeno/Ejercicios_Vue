@@ -1,5 +1,6 @@
 <template>
-  <div class="container center">  
+  <div class="container center">
+    <img src="https://i.pinimg.com/236x/4b/90/aa/4b90aa1063147d9bd2c5a1d2d64cbbc4.jpg" alt="img">
     <cambios></cambios>
   </div>
 </template>
