@@ -275,3 +275,43 @@ Para usar a Axios, se debe importar en cada componente donde se desea implementa
 ```javascript
 import axios from 'axios';
 ```
+
+## ¿Qué es el testeo de aplicaciones?
+
+Es el proceso de someter una aplicación a diferentes pruebas para comprobar que ésta funcionacorrectamente. 
+
+ ### Tipos de tests y técnicas de desarrollo con tests
+
+Para mayor información: [Vue Test Utils](https://vue-test-utils.vuejs.org/) 
+
+#### Unitario
+
+Un test unitario o “prueba unitaria” es un tipo de test automatizado, es decir, se debe poder ejecutarsin necesidad de intervención manual. Este test, se utiliza para comprobar que un método concretodel código de producción funciona correctamente.
+
+#### Tests end-to-end
+
+Es una metodología que se utiliza para probar si el flujo de una aplicación se está ejecutando segúnlo  diseñado de  principio a  fin.
+
+La diferencia que tiene con los tests unitarios, es que end-to-end se enfoca en el sistema de maneraintegral, es decir probarlo como un todo.
+
+#### Técnicas TDD y BDD
+
+Ambas técnicas, están orientadas a crear aplicaciones más robustas y centradas en los requisitosmás que en el contenido propio del código
+
+Desarrollo guiado por pruebas de software, o **Test-driven development (TDD)**, es una técnica quese  basa en  un  desarrollo de  pruebas a  través de  las  cuales debe pasar el  código, si  está bienimplementado, se continúa creando código enfocado hacia la siguiente prueba, sinó, se configurahasta que pase la prueba y podamos ir a la siguiente fase.
+
+Desarrollo dirigido por comportamiento o **Behavior Driven Development (BDD)**, como bien lo indicasu nombre, no se trata de una técnica de testing, sino que es una estrategia de desarrollo (así comoTDD).
+
+Mientras TDD se enfoca en la prueba unitaria, BDD en cambio, se enfoca en la prueba de más altonivel, la prueba funcional, la de aceptación, el foco está en cumplir con el negocio y no solo con elcódigo.
+
+#### Assertions
+
+Una aseveración es  una  expresión booleana  en  un  punto específico de  un  programa  que  seráverdadera a menos que haya un error en el programa.
+
+#### Mocks
+
+O  "Mock  object" son  sustitutos de  objetos o  componentes del  sistema, utilizados en  reemplazodurante las pruebas. Su principal función es validar que ciertos métodos sean llamados en los objetos que están imitando
+
+#### Stubs
+
+Una función, Método o  fragmento de  código sustituto, que  simula un  comportamiento específicodentro de un objeto para facilitar las pruebas
