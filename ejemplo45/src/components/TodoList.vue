@@ -4,7 +4,7 @@
         <li v-for="(item,index) in tareas" :key="index" @click="cambioTarea(item.id)" @dblclick="borrandoTarea(item.id)" class="ToDo-tasks" :class="{completed: item.completo}">
           {{item.task}}
         </li>
-      </ul>
+    </ul>
   </div>
 </template>
 

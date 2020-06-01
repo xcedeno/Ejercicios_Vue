@@ -2,6 +2,7 @@
   <div>
     <form @submit.prevent="addTodo">
       <input class="ToDo-input" type="text" placeholder="Agrega una tarea" v-model="tarea">
+      <button @click.prevent.stop="addTodo">Agregar</button>
     </form>
   </div>
 </template>
@@ -20,7 +21,7 @@ export default {
         this.$store.dispatch('agregando',this.tarea);
         this.tarea = '';
       } else {
-        alert("Debe agregar una actividad");
+        console.log("Debe agregar una actividad");
       }
     } 
   }

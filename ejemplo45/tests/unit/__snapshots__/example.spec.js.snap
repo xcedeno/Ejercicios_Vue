@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App.vue prueba test 2 1`] = `
+<div
+  class="ToDo-container"
+  id="app"
+>
+  <h1
+    class="ToDo-title"
+  >
+    Lista de tareas con Vuex
+  </h1>
+   
+  <todo-add-stub />
+   
+  <todo-list-stub />
+</div>
+`;
