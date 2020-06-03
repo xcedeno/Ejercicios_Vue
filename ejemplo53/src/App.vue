@@ -1,32 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <navegation></navegation>
+    <router-view class="container" :users="users"/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Navegation from '@/components/Navegation.vue';
+import db from '@/db/db';
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: 'App',
+  components: {
+    Navegation
+  },
+  data() {
+    return {
+      users: null
     }
-  }
+  },
+  mounted() {
+    db.collection("users").doc("P2pXb9II3lPAEVoGGmSu").get().then(response => {
+      console.log(response.data())
+      this.users = response.data().name;
+    })    
+  },  
 }
+</script>
+
+<style lang="scss">
+$primary: #05b2dd;
+@import "../node_modules/bootstrap/scss/bootstrap";
 </style>
