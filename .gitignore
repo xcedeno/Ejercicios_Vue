@@ -192,6 +192,7 @@ ejemplo52/dist
 ejemplo53/node_modules
 ejemplo53/.DS_Store
 ejemplo53/dist
+ejemplo53/src/db/db.js
 
 # local env files
 .env.local

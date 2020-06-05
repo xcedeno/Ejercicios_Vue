@@ -229,6 +229,7 @@ $ npm i --save @fortawesome/vue-fontawesome
 yarn add @fortawesome/vue-fontawesome -D
 yarn add @fortawesome/free-solid-svg-icons -D
 yarn add @fortawesome/fontawesome-svg-core -D
+yarn add @fortawesome/fontawesome-free -D
 ```
 
 * Sitio Oficial:
@@ -274,6 +275,21 @@ Para usar a Axios, se debe importar en cada componente donde se desea implementa
 
 ```javascript
 import axios from 'axios';
+```
+
+## Instalando VueFire
+
+* Sitio Oficial:
+  [VueFire](https://vuefire.vuejs.org/)
+
+* Instalacion con NPM:
+```bash
+npm install vuefire firebase
+```
+
+* Instalacion con Yarn:
+```bash
+yarn add vuefire firebase
 ```
 
 ## ¿Qué es el testeo de aplicaciones?

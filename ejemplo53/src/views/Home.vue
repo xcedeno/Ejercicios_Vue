@@ -1,7 +1,9 @@
 <template>
   <div class="mt-4">
-    <div class="text-secondary text-center">
-      Bienvenido de vuelta <span v-text="users" class="font-weight-bold text-info"></span>
+    <div class="text-center" v-if="users">
+      <div class="text-secondary text-center">
+        Bienvenido de vuelta <span v-text="users" class="font-weight-bold text-info"></span>, <a href="#" role="button" @click="$emit('logout')" class="text-primary">logout</a>
+      </div>
     </div>
     <div class="container text-center">
       <div class="row justify-content-center">

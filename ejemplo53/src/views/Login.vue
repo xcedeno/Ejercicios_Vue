@@ -28,7 +28,7 @@
     </form>
     <p class="text-center mt-2">
       or
-      <router-link to="/register">register</router-link>
+      <router-link to="/register">Register</router-link>
     </p>
   </div>
 </template>
@@ -53,7 +53,16 @@ export default {
           };
 
           firebase.auth().signInWithEmailAndPassword(infoUser.email, infoUser.password)
-            .then(()=>{
+            .then((respon)=>{
+                console.log(respon.user.refreshToken)
+                console.log(respon.user.displayName)
+                console.log(respon.user.email)
+                console.log(respon.user.emailVerified)
+                console.log(respon.user.photoURL)
+                console.log(respon.user.isAnonymous)
+                console.log(respon.user.uid)
+                console.log(respon.user.providerData)
+
                 this.$router.push("Meetings")
             })
             .catch(error=> {
