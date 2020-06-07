@@ -16,6 +16,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/register">Register</router-link>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" @click="$emit('logout')">Logout</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -27,7 +30,3 @@ export default {
     name: 'Navegation'
 }
 </script>
-
-<style>
-
-</style>

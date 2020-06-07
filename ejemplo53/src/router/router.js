@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
   const routes = [
   {
@@ -24,6 +24,16 @@ Vue.use(VueRouter)
     path: '/meetings',
     name: 'Meetings',
     component: () => import('../views/Meetings.vue')
+  },
+  {
+    path: '/checkin/:usersID/:meetingsID',
+    name: 'CheckIn',
+    component: () => import('../views/CheckIn.vue')
+  },
+  {
+    path: '/attendees/:usersID/:meetingsID',
+    name: 'Attendees',
+    component: () => import('../views/Attendees.vue')
   },
   {
     path: '*',
