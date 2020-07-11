@@ -6,18 +6,22 @@
           <label for="escribeBusqueda" class="sr-only">Escribe tu Busqueda</label>
           <input class="form-control" type="text" v-model="buscar">
         </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" v-model="cursoCompleto">
-          <label class="form-check-label" for="exampleCheck1">Completo</label>
+        <div class="form-group form-check-inline">
+          <input type="radio" class="form-radio-input" v-model="cursoCompleto" :value="true">
+          <label class="form-radio-input">Completo</label>
+        </div>
+        <div class="form-group form-check-inline">
+          <input type="radio" class="form-radio-input" v-model="cursoCompleto" :value="false">
+          <label class="form-radio-input">Incompleto</label>
         </div>
       </div>
   </div>
   <div class="row">
-    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" v-for="(item, index) in cursosGetters" :key="index">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" v-for="(item, index) in buscar" :key="index">
       <div class="card">
-        <img :src="item.image" class="card-img-top" :alt="item.name">
+        <img :src="item.image" class="card-img-top" :alt="item.id">
         <div class="card-body">
-          <h5 class="card-title" v-text="item.title"></h5>
+          <h5 class="card-title" v-text="item.name"></h5>
           <p class="card-text" v-text="item.description"></p>
         </div>
         <ul class="list-group list-group-flush">
@@ -37,15 +41,23 @@
 <script>
 export default {
   name: 'Busqueda',
-  data() {
-    return {
-      cursoCompleto: false,
-      buscar: ''
-    }
-  },
   computed: {
-    cursosGetters(){
-      
+    buscar: {
+      get(){
+        console.log(this.$store.getters.fitroBusqueda)
+        return this.$store.getters.fitroBusqueda;
+      },
+      set(valor){
+        return this.$store.dispatch('cambiarBusqueda',valor);
+      }
+    },
+    cursoCompleto: {
+      get(){
+        return this.$store.getters.filtroTerminado;
+      },
+      set(){
+        return this.$store.dispatch('cambiarTermino');
+      }
     }
   }
 }

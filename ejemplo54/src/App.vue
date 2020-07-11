@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <busqueda></busqueda>
+  <div class="container">
+    <cursos-app></cursos-app>
   </div>
 </template>
 
 <script>
-import Busqueda from './components/Busqueda.vue';
+import CursosApp from './components/CursosApp.vue';
 
 export default {
   name: 'App',
-  components: { Busqueda },
+  components: { CursosApp },
 }
 </script>
 

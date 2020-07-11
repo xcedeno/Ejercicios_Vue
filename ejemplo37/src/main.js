@@ -14,13 +14,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBKGAAl_CI31mzZAvVveZE7wl9y5YYMQdA",
-  authDomain: "listaejemplo2.firebaseapp.com",
-  databaseURL: "https://listaejemplo2.firebaseio.com",
-  projectId: "listaejemplo2",
-  storageBucket: "listaejemplo2.appspot.com",
-  messagingSenderId: "555382415802",
-  appId: "1:555382415802:web:e93a4dafc39e40db843d83"
+
 };
 
 Firebase.initializeApp(firebaseConfig);

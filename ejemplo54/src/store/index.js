@@ -75,6 +75,12 @@ export default new Vuex.Store({
       mostrarCursos(state){
         return state.cursos;
       },
+      fitroBusqueda(state){
+        return state.filtros.busqueda;
+      },
+      filtroTerminado(state){
+        return state.filtros.terminado;
+      },
       filtraCurso(state){
         if (state.filtros.busqueda){
           let curso = state.cursos.filter(datos => datos.completed === state.filtros.terminado)
@@ -93,6 +99,7 @@ export default new Vuex.Store({
   },
   actions: {
     cambiarBusqueda(context,terminoBuscar){
+      console.log(terminoBuscar)
       context.commit('cambiando_busqueda',terminoBuscar);
     },
     cambiarTermino(context){
