@@ -194,6 +194,29 @@ ejemplo53/.DS_Store
 ejemplo53/dist
 ejemplo53/src/db/db.js
 
+# carpeta 54
+ejemplo54/node_modules
+ejemplo54/.DS_Store
+ejemplo54/dist
+
+# carpeta 55
+ejemplo55/node_modules
+ejemplo55/.DS_Store
+ejemplo55/dist
+ejemplo55/src/config/firebaseConfig.js
+
+# carpeta 56
+ejemplo56/node_modules
+ejemplo56/.DS_Store
+ejemplo56/dist
+ejemplo56/src/config/
+
+# carpeta 
+ejemplo/node_modules
+ejemplo/.DS_Store
+ejemplo/dist
+ejemplo/src/config/
+
 # local env files
 .env.local
 .env.*.local
