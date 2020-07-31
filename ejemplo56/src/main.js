@@ -7,6 +7,10 @@ import Vuelidate from 'vuelidate';
 Vue.use(Vuelidate);
 Vue.config.productionTip = false;
 
+Vue.directive('colores',(el,binding)=>{
+  el.style.color = binding.value;
+})
+
 new Vue({
   router,
   store,

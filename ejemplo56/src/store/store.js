@@ -5,11 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    conteo: 0
   },
   mutations: {
+    contando(state,valor){
+      state.conteo += valor;
+    }
   },
   actions: {
   },
-  modules: {
+  getters: {
+    getConteo: (state) => (num1) => {
+      return state.conteo * num1
+    }
   }
 })
