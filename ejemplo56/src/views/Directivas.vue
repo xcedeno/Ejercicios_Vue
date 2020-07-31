@@ -6,7 +6,7 @@
           <p v-sizeTexto="'20px'">Texto con directiva personalizada</p>
           <p v-colores="'white'">Texto con directiva global</p>
       </div>
-      <p>Valor: <span>{{$store.getters.getConteo(2)}}</span></p>
+      <p>Valor: <span>{{$store.getters[`ob1/getConteo`]}}</span></p>
       <button @click="contar">+</button>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         contar(){
-            this.$store.commit('contando',1);
+            this.$store.commit('ob1/contando',1);
         }
     },
 }

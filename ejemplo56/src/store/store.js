@@ -1,9 +1,11 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import { ob1 } from "./modules/objetoAStore";
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const ob2 = {
+  namespaced: true,
   state: {
     conteo: 0
   },
@@ -18,5 +20,12 @@ export default new Vuex.Store({
     getConteo: (state) => (num1) => {
       return state.conteo * num1
     }
+  },
+}
+
+export default new Vuex.Store({
+  modules: {
+    ob1,
+    ob2
   }
 })
