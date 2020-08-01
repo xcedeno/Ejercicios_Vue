@@ -217,6 +217,12 @@ ejemplo57/.DS_Store
 ejemplo57/dist
 ejemplo57/src/config/
 
+# carpeta 58
+ejemplo58/node_modules
+ejemplo58/.DS_Store
+ejemplo58/dist
+ejemplo58/src/config/
+
 # carpeta 
 ejemplo/node_modules
 ejemplo/.DS_Store
