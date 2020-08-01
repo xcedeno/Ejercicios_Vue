@@ -19,7 +19,7 @@
       <div class="container">
         <div class="columns is-desktop is-mobile is-tablet is-multiline is-centered">
           <div class="column is-12-mobile is-4-desktop is-4-tablet" v-for="(item, index) in datosApi" :key="index">
-            <personajes :personaje="item"></personajes>
+            <personajes :personaje="item" @mostrarModal="mostrarModal"></personajes>
           </div>
         </div>
         <nav class="pagination is-centered" role="navegation" aria-label="pagination">
@@ -32,6 +32,58 @@
           <a class="pagination-next" @click="cambiarPagina(pagina+1)">Siguiente</a>
         </nav>
       </div> 
+      <!-- Modal con bulma-->
+      <div class="modal" :class="{'is-active': modal}" v-if="modal">
+        <div class="modal-background" @click="modal = false"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">{{datoPersonaje.name}}</p>
+            <button class="delete" aria-label="close" @click="modal = false"></button>
+          </header>
+          <section class="modal-card-body">
+            <div class="box">
+              <article class="media">
+                <div class="media-left">
+                  <figure class="image is-64x64">
+                    <img :src="datoPersonaje.image" :alt="datoPersonaje.id+'-'+datoPersonaje.name">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                     <small>Cantidad de Episodios: {{datoPersonaje.episode.length}}.</small> <br> <small> Fecha de Creación: {{datoPersonaje.created}}</small>
+                      <br>
+                        <em>Genero:</em> {{datoPersonaje.gender}}.<br> <em>Estado:</em> {{datoPersonaje.status}}. <br><em>Raza:</em> {{datoPersonaje.species}}.<br> <em>Origen:</em> {{datoPersonaje.origin.name}}
+                    </p>
+                  </div>
+                  <nav class="level is-mobile">
+                    <div class="level-left">
+                      <a class="level-item" aria-label="reply">
+                        <span class="icon is-small">
+                          <i class="fas fa-reply" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                      <a class="level-item" aria-label="retweet">
+                        <span class="icon is-small">
+                          <i class="fas fa-retweet" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                      <a class="level-item" aria-label="like">
+                        <span class="icon is-small">
+                          <i class="fas fa-heart" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+              </article>
+            </div>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button" @click="modal = false">Cerrar</button>
+          </footer>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -43,10 +95,12 @@ export default {
   name: 'App',
   data() {
     return {
-      datosApi: '',
+      datosApi: [],
       pagina: 1,
       paginas: 1,
-      busqueda: ''
+      busqueda: '',
+      modal: false,
+      datoPersonaje: {}
     }
   },
   methods: {
@@ -66,6 +120,11 @@ export default {
     buscarDatos(){
       this.pagina = 1;
       this.traerDatos();
+    },
+    async mostrarModal(id){
+      let resultado = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+      this.datoPersonaje = resultado.data;
+      this.modal = true;
     }
   },
   created() {
