@@ -6,7 +6,14 @@
             <span class="has-text-success">R&M</span>
             <span class="subtitle"> Personajes</span>
           </h1>
-          <button class="button is-success is-rounded" @click="traerDatos">Consultar</button>
+          <div class="field has-addons is-pulled-right">
+            <div class="control">
+              <input type="text" class="input is-rounded" @keyup.enter="buscarDatos" v-model="busqueda">
+            </div>
+            <div class="control">
+              <button class="button is-success is-rounded" @click="buscarDatos">Buscar</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="container">
@@ -38,13 +45,15 @@ export default {
     return {
       datosApi: '',
       pagina: 1,
-      paginas: 1
+      paginas: 1,
+      busqueda: ''
     }
   },
   methods: {
     async traerDatos(){
       let params = {
-        page: this.pagina
+        page: this.pagina,
+        name: this.busqueda
       };
       let resultado = await axios.get('https://rickandmortyapi.com/api/character',{params});
       this.paginas = resultado.data.info.pages;
@@ -52,6 +61,10 @@ export default {
     },
     cambiarPagina(numPag){
       this.pagina = (numPag > 0 && numPag <= this.paginas) ? numPag : this.pagina;
+      this.traerDatos();
+    },
+    buscarDatos(){
+      this.pagina = 1;
       this.traerDatos();
     }
   },
