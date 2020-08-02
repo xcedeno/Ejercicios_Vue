@@ -12,35 +12,13 @@
 <body>
   <div id="app">
     <header>
-      <nav class="navbar">
-        <a href="" class="nav-log navbar-brand">
-          <img src="./assets/got-logo-200x88.png" alt="got-logo" class="got-logo">
-        </a>
-        <ul class="nav justify-content-end">
-          <li class="nav-item" id="nav-1">
-            <a href="" class="nav-link">Characters</a>
-          </li>
-        </ul>
-      </nav>
+      <the-nav />
     </header>
     <main>
-
+      <the-main />
     </main>
     <footer>
-      <div class="container footer">
-        <nav class="nav justify-content-center">
-          <a href="" class="nav-link" target="_blank">
-            <i class="fab fa-telegram" aria-hidden="true"></i>
-          </a>
-          <a href="" class="nav-link" target="_blank">
-            <i class="fab fa-twitter" aria-hidden="true"></i>
-          </a>
-          <a href="" class="nav-link" target="_blank">
-            <i class="fab fa-facebook" aria-hidden="true"></i>
-          </a>
-        </nav>
-        <p>Página web</p>
-      </div>
+      <the-footer />
     </footer>
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -48,12 +26,20 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
   <script src="./data/bodies.js"></script>
+  <script src="./components/the-nav.js"></script>
+  <script src="./components/the-footer.js"></script>
+  <script src="./components/the-main.js"></script>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
         
       },
+      components: {
+        TheNav,
+        TheFooter,
+        TheMain
+      }
     });
   </script>
 </body>
