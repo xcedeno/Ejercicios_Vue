@@ -18,12 +18,12 @@ const TheMain = {
         <div class="ch-body d-flex flex-column">
           <div class="body-row head-row d-flex justify-content-center">
             <div class="body-part position-relative">
-              <div class="prev-area">
-                <button class="prev-btn">&#10094;</button>
+              <div class="prev-area" @mouseover="hoverPrev = true" @mouseleave="hoverPrev = false">
+                <button class="prev-btn" v-show="hoverPrev" @click="selectPrevHead">&#10094;</button>
               </div>
-              <img src="./assets/body-parts/j1.png" alt="j1" class="body-img heads-img about-selected">
-              <div class="next-area">
-                <button class="next-btn">&#10095;</button>
+              <img :src="fileParts.heads[selectedHeadIndex].src" :alt="fileParts.heads[selectedHeadIndex].id" class="body-img heads-img about-selected">
+              <div class="next-area" @mouseover="hoverNext = true" @mouseleave="hoverNext = false">
+                <button class="next-btn" v-show="hoverNext" @click="selectNextHead">&#10095;</button>
               </div>
             </div>
           </div>
@@ -76,5 +76,25 @@ const TheMain = {
       </div> -->
     </div>
   </div>
-    `
+    `,
+    data() {
+        return {
+            fileParts: bodies,
+            hoverPrev: false,
+            hoverNext: false,
+            selectedHeadIndex: 0,
+            selectedBodyIndex: 0,
+            selectedFootIndex: 0,
+            minIndex: 0,
+            maxIndex: bodies.heads.length - 1
+        }
+    },
+    methods: {
+        selectPrevHead(){
+            this.selectedHeadIndex = this.selectedHeadIndex > this.minIndex ? this.selectedHeadIndex-1 : this.maxIndex;
+        },
+        selectNextHead(){
+            this.selectedHeadIndex = this.selectedHeadIndex < this.maxIndex ? this.selectedHeadIndex+1 : this.minIndex; 
+        }
+    },
 }
