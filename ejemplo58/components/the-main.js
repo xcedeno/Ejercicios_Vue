@@ -17,42 +17,18 @@ const TheMain = {
       <div class="col-12">
         <div class="ch-body d-flex flex-column">
           <div class="body-row head-row d-flex justify-content-center">
-            <div class="body-part position-relative">
-              <div class="prev-area" @mouseover="hoverPrev = true" @mouseleave="hoverPrev = false">
-                <button class="prev-btn" v-show="hoverPrev" @click="selectPrevHead">&#10094;</button>
-              </div>
-              <img :src="fileParts.heads[selectedHeadIndex].src" :alt="fileParts.heads[selectedHeadIndex].id" class="body-img heads-img about-selected">
-              <div class="next-area" @mouseover="hoverNext = true" @mouseleave="hoverNext = false">
-                <button class="next-btn" v-show="hoverNext" @click="selectNextHead">&#10095;</button>
-              </div>
-            </div>
+            <PartSelected :parts="fileParts.heads" :aleatorio="randomHead"></PartSelected>
           </div>
           <div class="body-row middle-row d-flex justify-content-center">
-            <div class="body-part position-relative">
-              <div class="prev-area">
-                <button class="prev-btn">&#10094;</button>
-              </div>
-              <img src="./assets/body-parts/j2.png" alt="j1" class="body-img heads-img about-selected">
-              <div class="next-area">
-                <button class="next-btn">&#10095;</button>
-              </div>
-            </div>
+            <PartSelected :parts="fileParts.middles" :aleatorio="randomBody"></PartSelected>
           </div>
           <div class="body-row foot-row d-flex justify-content-center">
-            <div class="body-part position-relative">
-              <div class="prev-area">
-                <button class="prev-btn">&#10094;</button>
-              </div>
-              <img src="./assets/body-parts/j3.png" alt="j1" class="body-img heads-img about-selected">
-              <div class="next-area">
-                <button class="next-btn">&#10095;</button>
-              </div>
-            </div>
+            <PartSelected :parts="fileParts.foots" :aleatorio="randomFoot"></PartSelected>
           </div>
         </div>
         <div class="btn-area d-flex justify-content-center">
           <div class="btn-container d-flex justify-content-between">
-            <button class="btn btn-light"> Random </button>
+            <button class="btn btn-light" @click="randomAll"> Random </button>
             <button id="about-btn" class="btn btn-light"> About </button>
             <button class="btn btn-light"> Download </button>
           </div>
@@ -80,21 +56,25 @@ const TheMain = {
     data() {
         return {
             fileParts: bodies,
-            hoverPrev: false,
-            hoverNext: false,
-            selectedHeadIndex: 0,
-            selectedBodyIndex: 0,
-            selectedFootIndex: 0,
-            minIndex: 0,
-            maxIndex: bodies.heads.length - 1
+            randomHead: false,
+            randomBody: false,
+            randomFoot: false,
+            selectedCharId: 1,
+            selectedParts: {
+              head: {},
+              middle: {},
+              foot: {}
+            }
         }
     },
     methods: {
-        selectPrevHead(){
-            this.selectedHeadIndex = this.selectedHeadIndex > this.minIndex ? this.selectedHeadIndex-1 : this.maxIndex;
-        },
-        selectNextHead(){
-            this.selectedHeadIndex = this.selectedHeadIndex < this.maxIndex ? this.selectedHeadIndex+1 : this.minIndex; 
-        }
+      randomAll(){
+        this.randomHead = true;
+        this.randomBody = true;
+        this.randomFoot = true;
+      }
     },
+    components: { 
+      PartSelected,
+    }
 }
