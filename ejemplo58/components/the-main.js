@@ -29,12 +29,12 @@ const TheMain = {
         <div class="btn-area d-flex justify-content-center">
           <div class="btn-container d-flex justify-content-between">
             <button class="btn btn-light" @click="randomAll"> Random </button>
-            <button id="about-btn" class="btn btn-light"> About </button>
+            <button id="about-btn" class="btn btn-light" @click="aboutToggle"> About </button>
             <button class="btn btn-light"> Download </button>
           </div>
         </div>
       </div>
-      <div v-show="isAboutOpen" id="about-area">
+      <div v-show="isAboutOpen" id="about-area" :class="aboutClass">
         <div class="spinner-container">
           <div class="spinner-grow red-spinner" role="status">
             <span class="sr-only">Loading...</span>
@@ -77,10 +77,22 @@ const TheMain = {
               title: [],
               quote: []
             },
-            apiCall: false
+            apiCall: false,
+            isAboutSelected: false
         }
     },
     methods: {
+      async aboutCharacter(){
+        if (this.isAboutSelected) {
+          this.apiCall = true;
+          this.isAboutOpen = true;
+          
+        } else {
+          
+        }
+        let respuesta = await axios.get('https://anapioficeandfire.com/api/characters/');
+        console.log(respuesta.data);
+      },
       randomAll(){
         this.randomHead = true;
         this.randomBody = true;
@@ -96,6 +108,14 @@ const TheMain = {
         }
         if (valor.type == 'foots') {
           this.selectedParts.foot = valor;
+        }
+      },
+      aboutToggle(){
+        if (this.isAboutOpen) {
+          this.closeAbout()
+        } else {
+          this.isAboutSelected = true;
+          this.aboutCharacter();
         }
       }
     },
