@@ -31,9 +31,11 @@ const PartSelected = {
     methods: {
         selectPrev(){
             this.selectedInddex = this.selectedInddex > this.minIndex ? this.selectedInddex-1 : this.maxIndex;
+            this.emitSelected();
         },
         selectNext(){
             this.selectedInddex = this.selectedInddex < this.maxIndex ? this.selectedInddex+1 : this.minIndex; 
+            this.emitSelected();
         },
         emitSelected(){
             this.$emit('partSelected',this.parteSeleccionada);
@@ -47,7 +49,7 @@ const PartSelected = {
     watch: {
         aleatorio(valor){
             if (valor == true){
-                this.selectedInddex = Math.floor(Math.random()*7);
+                this.selectedInddex = aleatorio();
                 this.$emit('cambiarSelectedIndex',true);
                 this.emitSelected();
             }

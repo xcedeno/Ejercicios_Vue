@@ -136,10 +136,10 @@ const TheMain = {
         this.randomFoot = true;
       },
       partSelected(valor){
-        console.log(valor)
         if (valor.type == 'heads'){
           this.selectedParts.head = valor;
           this.selectedCharId = valor.id;
+          this.aboutCharacter();
         };
         if (valor.type == 'middles') {
           this.selectedParts.middle = valor;
