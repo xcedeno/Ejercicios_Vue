@@ -2,7 +2,7 @@ const TheMain = {
     template: `
     <div class="container-fluid">
     <h1 class="main-title"> Valar Morghulis.. </h1>
-    <h2 class="main-subtitle">  Who's next? </h2>
+    <h2 class="main-subtitle" ref="muestra" data-toggle="tooltip" data-placement="right" title="ejemplo tooltip ...">  Who's next? </h2>
     <div class="row">
       <div v-show="isAboutOpen" class="text-center text-md-left" id="quote-area" :class="quotesClass">
         <div class="spinner-container" v-if="apiCall">
@@ -28,8 +28,8 @@ const TheMain = {
         </div>
         <div class="btn-area d-flex justify-content-center">
           <div v-if="!capturaPantallaOn" class="btn-container d-flex justify-content-between">
-            <button class="btn btn-light" @click="randomAll"> Random </button>
-            <button id="about-btn" class="btn btn-light" @click="aboutToggle"> About </button>
+            <button class="btn btn-light" @click="randomAll" data-toggle="tooltip" data-placement="top" title="Tooltip on top"> Random </button>
+            <button id="about-btn" class="btn btn-light" @click="aboutToggle" ref="cerrando" data-toggle="tooltip" data-placement="right" title="Tooltip on right"> About </button>
             <button class="btn btn-light" @click="capturaPantalla"> Download </button>
           </div>
         </div>
@@ -173,14 +173,19 @@ const TheMain = {
       },
       aboutToggle(){
         if (this.isAboutOpen) {
-          this.closeAbout()
+          this.$refs.cerrando.innerHTML = "About";
+          this.closeAbout();
         } else {
           this.isAboutSelected = true;
+          this.$refs.cerrando.innerHTML = "Cerrar";
           this.aboutCharacter();
         }
       }
     },
     components: { 
       PartSelected,
-    }
+    },
+    mounted() {
+      $(this.$refs.muestra).tooltip('show');
+    },
 }
