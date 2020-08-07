@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <footer>
     <div class="container footer">
         <nav class="nav justify-content-center">
             <a href="" class="nav-link" target="_blank">
@@ -13,7 +13,7 @@
             </a>
         </nav>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>

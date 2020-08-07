@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <header>
     <nav class="navbar">
         <a href="" class="nav-log navbar-brand">
             <img :src="imagen" alt="got-logo" class="got-logo" />
@@ -10,7 +10,7 @@
             </li>
         </ul>
     </nav>
-  </div>
+  </header>
 </template>
 
 <script>

@@ -57,6 +57,8 @@
 import PartSelected from './PartSelected.vue';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
+import { bodies } from "../data/bodies";
+import $ from 'jquery';
 
 export default {
   name: 'HomePage',
@@ -76,7 +78,7 @@ export default {
       quotesClass: 'col-12 col-md-4 quotes',
       aboutClass: 'col-12 col-md-4 about',
       figureClass: 'col-12',
-      selectedChar: {
+      selectedChar:{
         id: 0,
         name: "",
         gender: '',
@@ -96,7 +98,7 @@ export default {
         html2canvas(selector).then(canvas=>{
           console.log(canvas);
           let croppedCanvas = document.createElement('canvas');
-          croppedCanvasContext = croppedCanvas.getContext('2d');
+          let croppedCanvasContext = croppedCanvas.getContext('2d');
           croppedCanvas.width = selector.clientWidth;
           croppedCanvas.height = selector.clientHeight;
           croppedCanvasContext.drawImage(canvas, 0, 0, selector.clientWidth, selector.clientHeight);
