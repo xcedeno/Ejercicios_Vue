@@ -27,10 +27,10 @@ const TheMain = {
           </div>
         </div>
         <div class="btn-area d-flex justify-content-center">
-          <div class="btn-container d-flex justify-content-between">
+          <div v-if="!capturaPantallaOn" class="btn-container d-flex justify-content-between">
             <button class="btn btn-light" @click="randomAll"> Random </button>
             <button id="about-btn" class="btn btn-light" @click="aboutToggle"> About </button>
-            <button class="btn btn-light"> Download </button>
+            <button class="btn btn-light" @click="capturaPantalla"> Download </button>
           </div>
         </div>
       </div>
@@ -78,10 +78,33 @@ const TheMain = {
               quote: []
             },
             apiCall: false,
-            isAboutSelected: false
+            isAboutSelected: false,
+            capturaPantallaOn: false
         }
     },
     methods: {
+      capturaPantalla(){
+        this.capturaPantallaOn = true;
+        let selector = document.querySelector('main');
+        html2canvas(selector).then(canvas=>{
+          console.log(canvas);
+          let croppedCanvas = document.createElement('canvas');
+          croppedCanvasContext = croppedCanvas.getContext('2d');
+          croppedCanvas.width = selector.clientWidth;
+          croppedCanvas.height = selector.clientHeight;
+          croppedCanvasContext.drawImage(canvas, 0, 0, selector.clientWidth, selector.clientHeight);
+          return croppedCanvas;
+        }).then(canvas => {
+          let imgURL = canvas.toDataURL('image/png', 1.0);
+          let link = document.createElement('a');
+          link.download = "screenShot.png";
+          link.href = imgURL;
+          link.click();
+          setTimeout(()=>{
+            this.capturaPantallaOn = false;
+          },1000);
+        })
+      },
       closeAbout(){
         this.apiCall = false;
         this.isAboutOpen = false;
