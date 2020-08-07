@@ -75,6 +75,7 @@ yarn add bootstrap jquery popper.js @popperjs/core
   ```js
     import 'bootstrap'; 
     import 'bootstrap/dist/css/bootstrap.min.css';
+    window.$ = window.jQuery = require('jquery');
   ```
 
 ## Uso de Babel - plugin-syntax-dynamic-import

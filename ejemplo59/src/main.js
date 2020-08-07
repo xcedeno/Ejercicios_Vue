@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faTwitter, faFacebookF, faGithub } from '@fortawesome/free-brands-svg-icons'
-
+window.$ = window.jQuery = require('jquery');
 library.add(faTwitter)
 library.add(faFacebookF);
 library.add(faGithub);
