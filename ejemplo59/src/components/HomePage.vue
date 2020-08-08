@@ -195,6 +195,9 @@ export default {
     PartSelected,
   },
   mounted() {
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
     $(this.$refs.muestra).tooltip('show');
   },
 }

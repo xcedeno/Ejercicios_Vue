@@ -1,9 +1,11 @@
+const images = require.context('../assets/body-parts', true, /\.png$/);
+
 export const bodies = {
     heads: [
         {
             id: 1,
             name: 'Cersei Lannister',
-            src: './assets/body-parts/a1.png',
+            src: images('./a1.png'),
             type: 'heads',
             apiId: 238,
             quotes: [
@@ -14,7 +16,7 @@ export const bodies = {
         {
             id: 2,
             name: 'Jaime Lannister',
-            src: './assets/body-parts/b1.png',
+            src: images('./b1.png'),
             type: 'heads',
             apiId: 529,
             quotes: [
@@ -25,7 +27,7 @@ export const bodies = {
         {
             id: 3,
             name: 'Tyrion Lannister',
-            src: './assets/body-parts/c1.png',
+            src: images('./c1.png'),
             type: 'heads',
             apiId: 1052,
             quotes: [
@@ -39,7 +41,7 @@ export const bodies = {
         {
             id: 4,
             name: 'Sansa Stark',
-            src: './assets/body-parts/d1.png',
+            src: images('./d1.png'),
             type: 'heads',
             apiId: 957,
             quotes: [
@@ -50,7 +52,7 @@ export const bodies = {
         {
             id: 5,
             name: 'Jon Snow',
-            src: './assets/body-parts/e1.png',
+            src: images('./e1.png'),
             type: 'heads',
             apiId: 583,
             quotes: [
@@ -63,7 +65,7 @@ export const bodies = {
         {
             id: 6,
             name: 'Daenerys Targaryen',
-            src: './assets/body-parts/h1.png',
+            src: images('./h1.png'),
             type: 'heads',
             apiId: 271,
             quotes: [
@@ -77,7 +79,7 @@ export const bodies = {
         {
             id: 7,
             name: 'Arya Stark',
-            src: './assets/body-parts/j1.png',
+            src: images('./j1.png'),
             type: 'heads',
             apiId: 148,
             quotes: [
@@ -89,7 +91,7 @@ export const bodies = {
         {
             id: 8,
             name: 'White Walker',
-            src: './assets/body-parts/f1.png',
+            src: images('./f1.png'),
             type: 'heads',
             apiId: null,
             quotes: [],
@@ -99,49 +101,49 @@ export const bodies = {
         {
             id: 1,
             name: 'Cersei Lannister',
-            src: './assets/body-parts/a2.png',
+            src: images('./a2.png'),
             type: 'middles',
         },
         {
             id: 2,
             name: 'Jaime Lannister',
-            src: './assets/body-parts/b2.png',
+            src: images('./b2.png'),
             type: 'middles',
         },
         {
             id: 3,
             name: 'Tyrion Lannister',
-            src: './assets/body-parts/c2.png',
+            src: images('./c2.png'),
             type: 'middles',
         },
         {
             id: 4,
             name: 'Sansa Stark',
-            src: './assets/body-parts/d2.png',
+            src: images('./d2.png'),
             type: 'middles',
         },
         {
             id: 5,
             name: 'Jon Snow',
-            src: './assets/body-parts/e2.png',
+            src: images('./e2.png'),
             type: 'middles',
         },
         {
             id: 6,
             name: 'Daenerys Targaryen',
-            src: './assets/body-parts/h2.png',
+            src: images('./h2.png'),
             type: 'middles',
         },
         {
             id: 7,
             name: 'Arya Stark',
-            src: './assets/body-parts/j2.png',
+            src: images('./j2.png'),
             type: 'middles',
         },
         {
             id: 8,
             name: 'White Walker',
-            src: './assets/body-parts/f2.png',
+            src: images('./f2.png'),
             type: 'middles',
         },
     ],
@@ -149,49 +151,49 @@ export const bodies = {
         {
             id: 1,
             name: 'Cersei Lannister',
-            src: './assets/body-parts/a3.png',
+            src: images('./a3.png'),
             type: 'foots',
         },
         {
             id: 2,
             name: 'Jaime Lannister',
-            src: './assets/body-parts/b3.png',
+            src: images('./b3.png'),
             type: 'foots',
         },
         {
             id: 3,
             name: 'Tyrion Lannister',
-            src: './assets/body-parts/c3.png',
+            src: images('./c3.png'),
             type: 'foots',
         },
         {
             id: 4,
             name: 'Sansa Stark',
-            src: './assets/body-parts/d3.png',
+            src: images('./d3.png'),
             type: 'foots',
         },
         {
             id: 5,
             name: 'Jon Snow',
-            src: './assets/body-parts/e3.png',
+            src: images('./e3.png'),
             type: 'foots',
         },
         {
             id: 6,
             name: 'Daenerys Targaryen',
-            src: './assets/body-parts/h3.png',
+            src: images('./h3.png'),
             type: 'foots',
         },
         {
             id: 7,
             name: 'Arya Stark',
-            src: './assets/body-parts/j3.png',
+            src: images('./j3.png'),
             type: 'foots',
         },
         {
             id: 8,
             name: 'White Walker',
-            src: './assets/body-parts/f3.png',
+            src: images('./f3.png'),
             type: 'foots',
         },
     ],
