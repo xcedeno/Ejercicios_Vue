@@ -5,7 +5,7 @@
     </div>
     <div class="asientos mt-5">
       <div class="row">
-        <div class="col text-white font-weight-bold m-3 asiento" v-for="(asiento,index) in asientos" :key="index" v-text="asiento.id" :class="asiento.disponible ? 'disponible' : 'ocupado'"></div>
+        <div class="col text-white font-weight-bold m-3 asiento" v-for="(asiento,index) in asientos" :key="index" v-text="asiento.id" :class="asiento.disponible ? 'disponible' : 'ocupado'" @click="selecionAsiento" :id="asiento.id"></div>
       </div>
     </div>
   </div>
@@ -42,6 +42,12 @@ export default {
             disponible: true
           },
         ]
+      }
+    },
+    methods: {
+      selecionAsiento(event){
+        let asientoSeleccionado = this.asientos.find(item => item.id === event.target.id);
+        asientoSeleccionado.disponible = !asientoSeleccionado.disponible;
       }
     },
 }
