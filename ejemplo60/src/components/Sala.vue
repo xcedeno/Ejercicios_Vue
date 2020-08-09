@@ -56,7 +56,8 @@ export default {
         console.log("liberar");
         this.asientos.forEach(element => {
           element.disponible = true;
-          element.adquirido = false
+          element.adquirido = false;
+          element.userId = null;
         });
         this.actualizarElementos();
       },
@@ -75,10 +76,6 @@ export default {
       },
       cargarDatos(data){
         this.asientos = data;
-        this.asientos.forEach(element => {
-          element.userId = this.idUser;
-        });
-        this.actualizarElementos();
       },
       selecionAsiento(event){
         let asientoSeleccionado = this.asientos.find(item => item.id === event.target.id);
@@ -88,6 +85,7 @@ export default {
           return
         }
         asientoSeleccionado.disponible = !asientoSeleccionado.disponible;
+        asientoSeleccionado.userId = this.idUser;
         this.actualizarElementos();
       },
       actualizarElementos(){
