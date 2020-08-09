@@ -9,7 +9,8 @@
       </div>
     </div>
     <div>
-      <b-button variant="success" @click="guardar" class="mt-5">Guardar</b-button>
+      <b-button variant="success" @click="guardar" class="mt-5 mx-3">Guardar</b-button>
+      <b-button variant="warning" @click="liberar" class="mt-5">Liberar</b-button>
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ export default {
     name: 'Sala',
     data() {
       return {
+        idUser: '',
         asientos: [
 /*           {
             id: 'A1',
@@ -50,25 +52,43 @@ export default {
       }
     },
     methods: {
+      liberar(){
+        console.log("liberar");
+        this.asientos.forEach(element => {
+          element.disponible = true;
+          element.adquirido = false
+        });
+        this.actualizarElementos();
+      },
       asientosSeleccionados(){
         return this.asientos.filter(ocupado => !ocupado.disponible && !ocupado.adquirido)
       },
       validarSientos(){
-
+        this.asientosSeleccionados().forEach(asiento=>{
+          console.log(asiento);
+          asiento.adquirido = true;
+        })
       },
       guardar(){
+        this.validarSientos();
         this.actualizarElementos();
       },
       cargarDatos(data){
         this.asientos = data;
+        this.asientos.forEach(element => {
+          element.userId = this.idUser;
+        });
+        this.actualizarElementos();
       },
       selecionAsiento(event){
         let asientoSeleccionado = this.asientos.find(item => item.id === event.target.id);
-        if (asientoSeleccionado.adquirido) {
+        console.log(asientoSeleccionado);
+        if (asientoSeleccionado.adquirido || (asientoSeleccionado.userId != null && asientoSeleccionado.userId != this.idUser)) {
           console.log("Asiento ocupado "+asientoSeleccionado.id);
           return
         }
         asientoSeleccionado.disponible = !asientoSeleccionado.disponible;
+        this.actualizarElementos();
       },
       actualizarElementos(){
         /* firebase.database().ref('/salas/sala1').set(this.asientos); */
@@ -85,9 +105,12 @@ export default {
     },
     created() {
       //this.actualizarElementos();
-      firebase.database().ref('salas').child('sala1').once('value', snapshot => {
+   /*    firebase.database().ref('salas').child('sala1').once('value', snapshot => {
+     this.cargarDatos(snapshot.val()) */
+      this.idUser = firebase.database().ref('/usuarios').push().key;
+      firebase.database().ref('salas').child('sala1').on('value', snapshot => {
         this.cargarDatos(snapshot.val())
-      })
+      });
     },
 }
 </script>
