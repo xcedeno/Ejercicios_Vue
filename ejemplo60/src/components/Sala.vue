@@ -79,11 +79,19 @@ export default {
       },
       selecionAsiento(event){
         let asientoSeleccionado = this.asientos.find(item => item.id === event.target.id);
-        console.log(asientoSeleccionado);
+
+        if (!asientoSeleccionado.adquirido && !asientoSeleccionado.disponible && asientoSeleccionado.userId == this.idUser){
+          asientoSeleccionado.userId = null;
+          asientoSeleccionado.disponible = !asientoSeleccionado.disponible;
+          this.actualizarElementos();
+          return
+        }
+
         if (asientoSeleccionado.adquirido || (asientoSeleccionado.userId != null && asientoSeleccionado.userId != this.idUser)) {
           console.log("Asiento ocupado "+asientoSeleccionado.id);
           return
-        }
+        }  
+      
         asientoSeleccionado.disponible = !asientoSeleccionado.disponible;
         asientoSeleccionado.userId = this.idUser;
         this.actualizarElementos();
