@@ -1,0 +1,21 @@
+{
+  "name": "ejemplo61",
+  "version": "1.0.0",
+  "description": "Ejemplo usuando NuxtJS",
+  "main": "index.js",
+  "author": "JuanDuran85",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "nuxt": "^2.14.1"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "bulma": "^0.9.0"
+  }
+}

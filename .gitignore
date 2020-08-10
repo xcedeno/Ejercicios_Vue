@@ -235,6 +235,17 @@ ejemplo60/dist
 ejemplo60/src/config/
 ejemplo60/.env
 
+# carpeta 61
+ejemplo61/node_modules
+ejemplo61/.DS_Store
+ejemplo61/dist
+
+# carpeta 62
+ejemplo62/node_modules
+ejemplo62/.DS_Store
+ejemplo62/dist
+ejemplo62/src/config/
+
 # carpeta 
 ejemplo/node_modules
 ejemplo/.DS_Store
@@ -244,6 +255,7 @@ ejemplo/src/config/
 # local env files
 .env.local
 .env.*.local
+.env
 
 # Log files
 npm-debug.log*
