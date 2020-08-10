@@ -5,11 +5,13 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import firebase from 'firebase';
 import {firebaseConfig} from './config/firebaseConfig';
+import Notifications from 'vue-notification';
 
 firebase.initializeApp(firebaseConfig);
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+Vue.use(Notifications);
 Vue.config.productionTip = false;
 
 new Vue({
