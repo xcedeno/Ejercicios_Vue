@@ -260,3 +260,5 @@ yarn-error.log*
 *.sw?
 sala1.json
 
+ejemplo60/.firebaserc
+ejemplo60/firebase.json
