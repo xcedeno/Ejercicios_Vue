@@ -233,6 +233,7 @@ ejemplo60/node_modules
 ejemplo60/.DS_Store
 ejemplo60/dist
 ejemplo60/src/config/
+ejemplo60/.env
 
 # carpeta 
 ejemplo/node_modules
@@ -258,3 +259,4 @@ yarn-error.log*
 *.sln
 *.sw?
 sala1.json
+
