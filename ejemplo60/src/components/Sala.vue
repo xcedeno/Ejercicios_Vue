@@ -61,7 +61,6 @@ export default {
     methods: {
       cancelar(){
         this.asientosSeleccionados().forEach(asiento=>{
-          console.log(asiento);
           asiento.disponible = true;
           asiento.userId = null;
         })
@@ -88,7 +87,7 @@ export default {
       guardar(){
         this.contador = 0;
         firebase.database().ref('salas').child('sala1').transaction(
-          (valoresDB)=>validarCompra(valoresDB),
+          (valoresDB)=>this.validarCompra(valoresDB),
           (error, committed, snapshot)=>this.validarRespuesta(error, committed, snapshot)
         )
         /* this.validarSientos();
@@ -112,7 +111,7 @@ export default {
               text: 'La operación se realizó con éxito...'
             });
         }
-        console.log(snapshot)
+        console.log(snapshot.val());
       },
       validarCompra(valoresDB){
          this.asientosSeleccionados().forEach(asiento=>{
