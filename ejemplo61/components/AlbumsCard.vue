@@ -1,8 +1,9 @@
 <template>
-  <div>
-      <ul>
-          <li>{{album.id}}-{{album.title}}</li>
-      </ul>
+  <div class="column mt-5 px-2 is-one-quarter">
+      <div class="box">
+        <h3>{{album.id}}-{{album.title}}</h3>
+        <a href="#" class="button is-primary">Ver más</a>
+      </div>
   </div>
 </template>
 
@@ -18,6 +19,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="css">
+    h3 {
+        min-height: 5em;
+    }
 </style>

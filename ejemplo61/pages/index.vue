@@ -4,9 +4,11 @@
         <article class="tile is-child notification is-info">
           <p class="title">Ejemplo con NuxtJS y VueJS</p>
           <p class="subtitle">Información de Albums</p>
-            <albums-card v-for="(item,index) in albums" :key="index" :album="item"></albums-card>
         </article>
-      </div>
+    </div>
+    <div class="columns is-multiline">
+        <albums-card v-for="(item,index) in albums" :key="index" :album="item"></albums-card>
+    </div>
   </div>
 </template>
 
