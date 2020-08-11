@@ -3,21 +3,18 @@
     "name": "albums-about",
     "path": "/albums/about",
     "component": "D:\\\\Juan\\\\Ejercicios_Vue\\\\ejemplo61\\\\pages\\\\albums\\\\about.vue",
-    "chunkName": "pages/albums/about",
-    "_name": "_fa13e6de"
+    "chunkName": "pages/albums/about"
   },
   {
     "name": "albums-id",
     "path": "/albums/:id?",
     "component": "D:\\\\Juan\\\\Ejercicios_Vue\\\\ejemplo61\\\\pages\\\\albums\\\\_id.vue",
-    "chunkName": "pages/albums/_id",
-    "_name": "_dbcc7184"
+    "chunkName": "pages/albums/_id"
   },
   {
     "name": "index",
     "path": "/",
     "component": "D:\\\\Juan\\\\Ejercicios_Vue\\\\ejemplo61\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_63c98d8c"
+    "chunkName": "pages/index"
   }
 ]

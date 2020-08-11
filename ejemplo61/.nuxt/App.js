@@ -5,7 +5,11 @@ import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch,
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
+import '..\\node_modules\\@fortawesome\\fontawesome-svg-core\\styles.css'
+
 import '..\\node_modules\\bulma\\css\\bulma.css'
+
+import '..\\assets\\css\\style.css'
 
 import _6f6c098b from './layouts/default.vue'
 

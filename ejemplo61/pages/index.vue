@@ -26,7 +26,6 @@ export default {
     },
     created() {
         axios.get(`${env.apiUrl}/albums`).then(response=>{
-            console.log(response);
             this.albums = response.data;
         })
     },
