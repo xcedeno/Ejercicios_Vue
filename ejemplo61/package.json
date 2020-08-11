@@ -12,7 +12,8 @@
     "start": "nuxt start"
   },
   "dependencies": {
-    "nuxt": "^2.14.1"
+    "nuxt": "^2.14.1",
+    "vue-router": "^3.4.2"
   },
   "devDependencies": {
     "axios": "^0.19.2",
