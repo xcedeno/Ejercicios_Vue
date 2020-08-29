@@ -234,6 +234,8 @@ ejemplo60/.DS_Store
 ejemplo60/dist
 ejemplo60/src/config/
 ejemplo60/.env
+ejemplo60/.firebaserc
+ejemplo60/firebase.json
 
 # carpeta 61
 ejemplo61/node_modules
@@ -245,6 +247,12 @@ ejemplo62/node_modules
 ejemplo62/.DS_Store
 ejemplo62/dist
 ejemplo62/src/config/
+
+# carpeta 63
+ejemplo63/node_modules
+ejemplo63/.DS_Store
+ejemplo63/dist
+ejemplo63/src/config/
 
 # carpeta 
 ejemplo/node_modules
@@ -271,6 +279,3 @@ yarn-error.log*
 *.sln
 *.sw?
 sala1.json
-
-ejemplo60/.firebaserc
-ejemplo60/firebase.json
