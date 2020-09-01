@@ -3,13 +3,13 @@ import Vuex from 'vuex';
 import { APIPOST, APIGET } from "../config/apiConfig";
 import router from '../router/router';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     activoNavBar: false,
-    tokenLogin: ""
-
+    tokenLogin: JSON.parse(localStorage.getItem('userToken')) || "",
+    datosDashboar: []
   },
   getters: {
 
@@ -17,17 +17,21 @@ export default new Vuex.Store({
   mutations: {
     datoLoginMutacion(state,res){
       state.tokenLogin = res.token;
+      localStorage.setItem('userToken', JSON.stringify(res.token));
     },
     activandoNavBar(state,dato){
       state.activoNavBar = dato;
+    },
+    dataDashboar(state,datoRecibido){
+      state.datosDashboar = datoRecibido;
     }
   },
   actions: {
     probandoLogin(context,datoLoginRecibido){
       APIPOST(datoLoginRecibido).then(res=>{
         if (res.username == datoLoginRecibido.username) {
-          router.replace('/dashboard')
-          context.commit("datoLoginMutacion",res)
+          context.commit("datoLoginMutacion",res);
+          router.push('/dashboard');
         } else {
           alert('No esta autorizado');
         }
@@ -36,9 +40,12 @@ export default new Vuex.Store({
       })
     },
     paginaActiva(context,dato){
-      APIGET('secure/dashboard').then(respon => {
-        console.log(respon);
-      }).catch(error => console.error(error))
+      if (dato) {
+        APIGET('secure/dashboard').then(respon => {
+          console.log(respon);
+          context.commit("dataDashboar",respon);
+        }).catch(error => console.error(error));
+      }
       context.commit("activandoNavBar",dato);
     }
   },

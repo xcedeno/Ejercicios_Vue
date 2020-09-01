@@ -6,23 +6,22 @@
       <h3 class="mt-0">Bienvenido</h3>
       <p>Bienvenido al sistema de Ordenes e Inventario de ClassicModels</p>
     </div>
-    <b-container fluid class="">
-      <b-row>
-        <b-col>
-          <div class="ordenes__diarias">
+    <div>
+      <div class="row mx-2">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 color__borde p-5">
+          <div>
             <radial-progress-bar :diameter="150" :completed-steps="completedSteps" :total-steps="totalSteps" :startColor="'green'" :innerStrokeColor="'white'"></radial-progress-bar>
             <a class="text-center" href="http://" target="_blank" rel="noopener noreferrer">Ver detalles</a>
           </div>
-        </b-col>
-        <b-col>
-          <div class="ordenes__diarias">
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 color__borde p-5">
+          <div>
             <radial-progress-bar :diameter="150" :completed-steps="completedSteps2" :total-steps="totalSteps2" :startColor="'green'" :innerStrokeColor="'white'"></radial-progress-bar>
             <a class="text-center" href="http://" target="_blank" rel="noopener noreferrer">Ver detalles</a>
           </div>
-        </b-col>
-      </b-row>
-    </b-container>
-
+        </div>
+      </div>
+    </div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -67,10 +66,8 @@ export default {
     padding: 10px;
     border-radius: 10px;
   }
-  .ordenes__diarias {
+  .color__borde{
     border: 1px solid black;
-    margin: 10px;
-    padding: 10px;
     border-radius: 10px;
   }
 </style>

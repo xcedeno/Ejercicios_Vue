@@ -15,7 +15,7 @@
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
                 <b-nav-item href="#">Profile</b-nav-item>
-                <b-nav-item href="#">Log Out</b-nav-item>
+                <b-nav-item href="#" @click="salir">Log Out</b-nav-item>
             </b-navbar-nav>
         </b-collapse>
     </b-navbar>
@@ -24,7 +24,14 @@
 
 <script>
 export default {
-    name: 'NavBar'
+    name: 'NavBar',
+    methods: {
+        salir(){
+            localStorage.removeItem('userToken');
+            this.$store.state.tokenLogin = "";
+            this.$router.replace('/');
+        }
+    },
 }
 </script>
 
