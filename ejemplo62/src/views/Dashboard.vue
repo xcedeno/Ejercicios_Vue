@@ -68,44 +68,19 @@
         </div>
       </div>
     </div>
-    <div class="mt-5">
-      <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-          <h3 class="font-weight-bold ml-4">Últimas Ordenes</h3>
-          <table class="table table-hover table-borderless mt-5">
-            <thead>
-              <tr class="border-bottom">
-                <td>N° Orden</td>
-                <td>Cliente</td>
-                <td>Fecha Entrega</td>
-                <td>Estado</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(item, index) in ultimasOrdenes" :key="index">
-                <td>{{item.num_orden}}</td>
-                <td>{{item.cliente}}</td>
-                <td>{{item.fecha_entrega}}</td>
-                <td>{{item.estado}}</td>
-                <td><button>Ver Detalle</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    
+    <TablasDashBoard />
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
+import TablasDashBoard from '@/components/TablasDashBoard.vue';
 import RadialProgressBar from 'vue-radial-progress';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    TablasDashBoard,
     RadialProgressBar
   },
   data() {
@@ -137,9 +112,6 @@ export default {
       let nombre = this.$store.getters.enviandoKpis[1].nombre
       let porcentaje = ((atrasadas*100)/(totales));
       return {totales,atrasadas,porcentaje,nombre};
-    },
-    ultimasOrdenes(){
-      return this.$store.getters.enviandoUO;
     }
   },
   created() {
