@@ -29,6 +29,7 @@ export default {
         salir(){
             localStorage.removeItem('userToken');
             this.$store.state.tokenLogin = "";
+            this.$store.state.datosEnStore = false;
             this.$router.replace('/');
         }
     },

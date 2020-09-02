@@ -9,10 +9,18 @@ export default new Vuex.Store({
   state: {
     activoNavBar: false,
     tokenLogin: JSON.parse(localStorage.getItem('userToken')) || "",
-    datosDashboar: []
+    datosDashboar: [],
+    datosDashboarKpis: [],
+    datosDashboarUtimasOrdenes: [],
+    datosEnStore: false,
   },
   getters: {
-
+    enviandoKpis(state){
+      return state.datosDashboarKpis;
+    },
+    enviandoUO(state){
+      return state.datosDashboarUtimasOrdenes;
+    }
   },
   mutations: {
     datoLoginMutacion(state,res){
@@ -24,6 +32,9 @@ export default new Vuex.Store({
     },
     dataDashboar(state,datoRecibido){
       state.datosDashboar = datoRecibido;
+      state.datosDashboarKpis = datoRecibido.kpis;
+      state.datosDashboarUtimasOrdenes = datoRecibido.utimas_ordenes;
+      state.datosEnStore = true;
     }
   },
   actions: {
@@ -40,13 +51,13 @@ export default new Vuex.Store({
       })
     },
     paginaActiva(context,dato){
-      if (dato) {
-        APIGET('secure/dashboard').then(respon => {
-          console.log(respon);
-          context.commit("dataDashboar",respon);
-        }).catch(error => console.error(error));
-      }
       context.commit("activandoNavBar",dato);
+    },
+    indicadoresCumplimiento(context){
+      APIGET('secure/dashboard').then(respon => {
+        console.log(respon);
+        context.commit("dataDashboar",respon);
+      }).catch(error => console.error(error));
     }
   },
 })

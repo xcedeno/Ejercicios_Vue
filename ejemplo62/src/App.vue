@@ -10,7 +10,10 @@ import NavBar from './components/NavBar.vue';
 
 export default {
   name: 'App',
-  components: { NavBar }
+  components: { NavBar },
+  mounted() {
+    this.$store.dispatch('indicadoresCumplimiento');
+  },
 }
 </script>
 
