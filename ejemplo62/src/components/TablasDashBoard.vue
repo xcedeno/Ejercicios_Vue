@@ -39,8 +39,8 @@ export default {
 </script>
 
 <style lang="scss">
-    button{
-        color: rgb(76, 76, 248);
-        background-color: rgb(159, 159, 235);
-    }
+  button{
+      color: rgb(76, 76, 248);
+      background-color: rgb(159, 159, 235);
+  }
 </style>
