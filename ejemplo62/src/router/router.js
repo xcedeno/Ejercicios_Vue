@@ -14,6 +14,11 @@ Vue.use(VueRouter)
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../views/Dashboard.vue')
+  },
+  {
+    path: '/ordenes',
+    name: 'Ordenes',
+    component: () => import('../views/Ordenes.vue')
   }
 ]
 

@@ -68,8 +68,7 @@
         </div>
       </div>
     </div>
-    
-    <TablasDashBoard />
+      <TablasDashBoard />
   </div>
 </template>
 
@@ -121,9 +120,6 @@ export default {
 </script>
 
 <style lang="css">
-  .breadcrumb__color {
-    background-color: white;
-  }
   .border__jumbotron {
     border: 1px solid black;
     margin: 10px;
@@ -137,5 +133,9 @@ export default {
   }
   .margenes__informacion{
     margin: 0 -5px;
+  }
+
+  .breadcrumb__color{
+    background-color: white;
   }
 </style>

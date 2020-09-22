@@ -13,6 +13,7 @@ export default {
   components: { NavBar },
   mounted() {
     this.$store.dispatch('indicadoresCumplimiento');
+    this.$store.dispatch('listadoOrdenes');
   },
 }
 </script>

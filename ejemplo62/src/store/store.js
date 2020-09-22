@@ -12,6 +12,7 @@ export default new Vuex.Store({
     datosDashboar: [],
     datosDashboarKpis: [],
     datosDashboarUtimasOrdenes: [],
+    datosDashboarUltimasDevoluciones: [],
     datosEnStore: false,
   },
   getters: {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     enviandoUO(state){
       return state.datosDashboarUtimasOrdenes;
+    },
+    enviandoUD(state){
+      return state.datosDashboarUltimasDevoluciones;
     }
   },
   mutations: {
@@ -34,7 +38,11 @@ export default new Vuex.Store({
       state.datosDashboar = datoRecibido;
       state.datosDashboarKpis = datoRecibido.kpis;
       state.datosDashboarUtimasOrdenes = datoRecibido.utimas_ordenes;
+      state.datosDashboarUltimasDevoluciones = datoRecibido['ultimas_devoluciones:'];
       state.datosEnStore = true;
+    },
+    monitorOrdenes(state,datoRecibido){
+      console.log(datoRecibido);
     }
   },
   actions: {
@@ -57,6 +65,12 @@ export default new Vuex.Store({
       APIGET('secure/dashboard').then(respon => {
         console.log(respon);
         context.commit("dataDashboar",respon);
+      }).catch(error => console.error(error));
+    },
+    listadoOrdenes(context){
+      APIGET('secure/ordenes?oficina=&estado&fecha-ini=&fecha-fin=&page=1&size=10').then(respon => {
+        console.log(respon);
+        context.commit("monitorOrdenes",respon);
       }).catch(error => console.error(error));
     }
   },
