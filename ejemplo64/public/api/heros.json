@@ -1,0 +1,34 @@
+[
+    {
+      "id": 10,
+      "firstName": "Christophe",
+      "lastName": "Hammes",
+      "capeCounter": 1,
+      "originDate": "",
+      "description": "Networked"
+    },
+    {
+      "id": 20,
+      "firstName": "Letha",
+      "lastName": "Osinski",
+      "capeCounter": 3,
+      "originDate": "",
+      "description": "Decentralized"
+    },
+    {
+      "id": 30,
+      "firstName": "Elenora",
+      "lastName": "Schmitt",
+      "capeCounter": 2,
+      "originDate": "",
+      "description": "Organized"
+    },
+    {
+      "id": 40,
+      "firstName": "Dolores",
+      "lastName": "Kihn",
+      "capeCounter": 0,
+      "originDate": "",
+      "description": "Focused"
+    }
+  ]

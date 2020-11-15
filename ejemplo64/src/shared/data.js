@@ -1,38 +1,18 @@
-const ourHeroes = [
-  {
-    id: 10,
-    firstName: 'Christophe',
-    lastName: 'Hammes',
-    capeCounter: 1,
-    originDate: new Intl.DateTimeFormat('es-CL').format(new Date(1996, 5, 1)),
-    description: 'Networked',
-  },
-  {
-    id: 20,
-    firstName: 'Letha',
-    lastName: 'Osinski',
-    capeCounter: 3,
-    originDate: new Intl.DateTimeFormat('es-CL').format(new Date(1998, 7, 1)),
-    description: 'Decentralized',
-  },
-  {
-    id: 30,
-    firstName: 'Elenora',
-    lastName: 'Schmitt',
-    capeCounter: 2,
-    originDate: new Intl.DateTimeFormat('es-CL').format(new Date(1999, 8, 1)),
-    description: 'Organized',
-  },
-  {
-    id: 40,
-    firstName: 'Dolores',
-    lastName: 'Kihn',
-    capeCounter: 0,
-    originDate: new Intl.DateTimeFormat('es-CL').format(new Date(2000, 9, 1)),
-    description: 'Focused',
-  },
-];
+import axios from 'axios';
+
+const getHeroes = async () => {
+  const res = await axios.get('api/heros.json');
+
+  var a = [new Date(2010, 8, 1), new Date(1912, 11, 2), new Date(2012, 3, 3), new Date(1999, 4, 6)];
+
+  const heroes = res.data.map( (datos,index) => {
+    datos.originDate = new Intl.DateTimeFormat('es-CL').format(a[index]);
+    return datos;
+  });
+  console.log(heroes);
+  return heroes;
+};
 
 export const data = {
-  ourHeroes,
+  getHeroes,
 };
