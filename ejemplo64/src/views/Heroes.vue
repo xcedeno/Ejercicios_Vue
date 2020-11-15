@@ -42,7 +42,7 @@
 
 <script>
 import { heroWatchers, lifecycleHooks, data } from '../shared';
-import HeroDetail from '@/components/HeroDetail.vue';
+import HeroDetail from './HeroDetail.vue';
 
 export default {
   name: 'Heroes',
