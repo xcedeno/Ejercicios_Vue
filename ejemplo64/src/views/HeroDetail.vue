@@ -80,19 +80,19 @@
 </template>
 
 <script>
-import { lifecycleHooks } from '../shared';
+import { lifecycleHooks, data } from '../shared';
 
 export default {
   name: 'HeroDetail',
   props: {
-    hero: {
-      type: Object,
-      default: () => {},
+    id: {
+      type: Number,
+      default: 0,
     },
   },
   data() {
     return {
-      clonedHero: { ...this.hero },
+      clonedHero: {},
     };
   },
   mixins: [lifecycleHooks],
@@ -102,6 +102,12 @@ export default {
         ? `${this.clonedHero.firstName} ${this.clonedHero.lastName}`
         : '';
     },
+  },
+  async created() {
+      let resulta = await data.getHeroes();
+      console.log(resulta);
+      this.clonedHero = resulta.find(item => item.id == this.id);
+      console.log(this.clonedHero);
   },
   methods: {
     cancelHero() {
@@ -141,7 +147,6 @@ export default {
   },
   filters: {
     shortDate(value) {
-      console.log(value);
       return value;
     },
   },

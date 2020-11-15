@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API } from './config';
+
 const getHeroes = async () => {
   try {
     const res = await axios.get(`${API}/heroes.json`);
@@ -11,7 +12,6 @@ const getHeroes = async () => {
       datos.originDate = new Intl.DateTimeFormat('es-CL').format(a[index]);
       return datos;
     });
-
     return heroes;
 
   } catch (error) {
@@ -33,5 +33,5 @@ let parseList = (response) => {
 
 
 export const data = {
-  getHeroes,
+  getHeroes
 };

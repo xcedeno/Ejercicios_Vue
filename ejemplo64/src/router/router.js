@@ -15,6 +15,12 @@ const routes = [
     component: Heroes
   },
   {
+    path: '/heroesdetail/:id',
+    name: 'HeroesDetail',
+    component: () => import('../views/HeroDetail.vue'),
+    props: r => ({ id: parseInt(r.params.id) })
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('../views/About.vue')
