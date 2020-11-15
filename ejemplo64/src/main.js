@@ -1,7 +1,16 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {faGithub, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(faGithub);
+library.add(faTwitter);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+
 
 Vue.config.productionTip = false
 

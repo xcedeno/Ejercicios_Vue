@@ -80,9 +80,7 @@
 </template>
 
 <script>
-import { format } from 'date-fns';
-
-import { displayDateFormat, lifecycleHooks } from '../shared';
+import { lifecycleHooks } from '../shared';
 
 export default {
   name: 'HeroDetail',
@@ -142,8 +140,9 @@ export default {
     },
   },
   filters: {
-    shortDate: function(value) {
-      return format(value, displayDateFormat);
+    shortDate(value) {
+      console.log(value);
+      return value;
     },
   },
 };

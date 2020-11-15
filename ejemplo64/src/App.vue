@@ -1,23 +1,12 @@
 <template>
   <div id="app">
-    <HeaderBar />
-    <div class="main-section columns">
-      <main class="column">
-        <Heroes />
-      </main>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
     </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import HeaderBar from '@/components/HeaderBar.vue';
-import Heroes from '@/components/Heroes.vue';
-
-export default {
-  name: 'App',
-  components: { HeaderBar, Heroes },
-};
-</script>
 
 <style lang="scss">
 @import '@/design/index.scss';
