@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Heroes from '../views/Heroes.vue';
 
 Vue.use(VueRouter)
 
@@ -12,22 +11,22 @@ const routes = [
   {
     path: '/heroes',
     name: 'Heroes',
-    component: Heroes
+    component: () => import(/* webpackChunkName: "bundle.heroes" */'../views/Heroes.vue'),
   },
   {
     path: '/heroesdetail/:id',
     name: 'HeroesDetail',
-    component: () => import('../views/HeroDetail.vue'),
-    props: r => ({ id: parseInt(r.params.id) })
+    component: () => import(/* webpackChunkName: "bundle.heroes" */'../views/HeroDetail.vue'),
+    props: router => ({ id: parseInt(router.params.id) })
   },
   {
     path: '/about',
     name: 'About',
-    component: () => import('../views/About.vue')
+    component: () => import(/* webpackChunkName: "bundle.about" */'../views/About.vue')
   },
   {
     path: '*',
-    component: () => import('../views/NotFound.vue')
+    component: () => import(/* webpackChunkName: "bundle.notfound" */'../views/NotFound.vue')
   }
 ]
 

@@ -31,7 +31,27 @@ let parseList = (response) => {
   return list;
 }
 
+const updateHero = async function(hero) {
+  try {
+    const response = await axios.put(`${API}/heroes/${hero.id}`, hero);
+    const updatedHero = parseItem(response, 200);
+    return updatedHero;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+export const parseItem = (response, code) => {
+  if (response.status !== code) throw Error(response.message);
+  let item = response.data;
+  if (typeof item !== 'object') {
+    item = undefined;
+  }
+  return item;
+};
 
 export const data = {
-  getHeroes
+  getHeroes,
+  updateHero
 };

@@ -111,10 +111,11 @@ export default {
   },
   methods: {
     cancelHero() {
-      this.$emit('cancel');
+      this.$router.push({ name: 'Heroes' });
     },
-    saveHero() {
-      this.$emit('save', this.clonedHero);
+    async saveHero() {
+      await data.updateHero(this.clonedHero);
+      this.$router.push({ name: 'Heroes' });
     },
     handleTheCapes(newValue) {
       const value = parseInt(newValue, 10);
