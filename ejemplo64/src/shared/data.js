@@ -33,7 +33,9 @@ let parseList = (response) => {
 
 const updateHero = async function(hero) {
   try {
-    const response = await axios.put(`${API}/heroes/${hero.id}`, hero);
+    const response = await axios.put(`${API}/heroes.json/${hero.id}`,hero);
+    console.log(response);
+    console.log(hero);
     const updatedHero = parseItem(response, 200);
     return updatedHero;
   } catch (error) {
