@@ -1,4 +1,4 @@
-<template>
+btn-light<template>
   <div>
     <ul class="ToDo-tasks">
         <li v-for="(item,index) in tareas" :key="index" @click="cambioTarea(item.id)" @dblclick="borrandoTarea(item.id)" class="ToDo-tasks" :class="{completed: item.completo}">
