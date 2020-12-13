@@ -47,7 +47,7 @@ export const mutations = {
 }
 
 export const actions = {
-    addItem({commit,state}, item){
+    addItem({commit,state, dispatch}, item){
         let buscarItem = state.cartItems.find(result => result.id == item.id);
         if(!buscarItem){
           commit('mutandoCartItem',item);
@@ -57,16 +57,28 @@ export const actions = {
             type: 'success'
           });
         } else {
-          Notification.error({
+/*           Notification.error({
             title: 'Success',
             message: 'No se puede agregar',
             type: 'success'
-          });
+          }); */
+          const alert = {
+            show: true,
+            variant: 'danger',
+            message: "Ya se encuentra agregado al carro"
+          };
+          dispatch('addAlert',alert,{root: true});
           console.log("error");
         }
     },
-    itemToTrash({commit},id){
-        commit('removeItemById',id)
+    itemToTrash({commit,dispatch},id){
+        commit('removeItemById',id);
+        const alert = {
+          show: true,
+          variant: 'danger',
+          message: "Eliminaste un elemento del carro"
+        };
+        dispatch('addAlert',alert,{root: true});
     },
     deleteAll({commit}){
       commit('deleteCart');

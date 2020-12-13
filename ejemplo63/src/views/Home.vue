@@ -123,17 +123,15 @@ export default {
   computed: {
     ...mapGetters({
       enviandoPokemones: 'enviandoPokemones',
-      totalCartItems: 'shoppingCart/totalCartItems'
+      totalCartItems: 'shoppingCart/totalCartItems',
+      alert: 'enviandoAlert'
     })  
   },
   methods: {
     ...mapActions({
-      addItem: 'shoppingCart/addItem'
+      addItem: 'shoppingCart/addItem',
+      closeAlert: 'removeAlert'
     }),
-    alert(){
-      console.log("alerta");
-    },
-    
   },
 };
 
