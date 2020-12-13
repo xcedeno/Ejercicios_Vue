@@ -105,7 +105,7 @@
 import CustomPopover from '@/components/CustomPopover.vue';
 import TrashIcon from '@/components/icon/TrashIcon.vue';
 import ShoppingCartIcon from '@/components/icon/ShoppingCartIcon.vue';
-import {mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
   name: "CartPopover",
@@ -120,10 +120,17 @@ export default {
   },
   
   computed: {
-    ...mapGetters(['enviandoCartItems', 'totalCartItems', 'cartStatus'])
+    ...mapGetters(['enviandoCartItems', 'totalCartItems', 'cartStatus']),
+    getCurrency(){
+      return { 
+        id: 'CLP',
+        selected: true,
+        content: 'CLP',
+      };
+    },
   },
   methods: {
-    
+    ...mapActions(['itemToTrash'])
   },
 }
 </script>

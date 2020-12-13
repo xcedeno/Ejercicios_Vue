@@ -78,7 +78,7 @@
                 </div>
                 <div 
                   class="card-backdrop d-flex align-items-center justify-content-center" 
-                  @click="addToCart(poke)">
+                  @click="addItem(poke)">
                   <b-img 
                     class="pokeball-img"
                     :src="'./images/Pokeball.svg'"
@@ -102,7 +102,7 @@ import ElectricIcon from '@/components/icon/ElectricIcon.vue';
 import GrassIcon from '@/components/icon/GrassIcon.vue';
 import FairyIcon from '@/components/icon/FairyIcon.vue';
 import PsychicIcon from '@/components/icon/PsychicIcon.vue';
-import {mapGetters} from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Home",
@@ -124,9 +124,11 @@ export default {
     ...mapGetters(['enviandoPokemones', 'totalCartItems'])  
   },
   methods: {
+    ...mapActions(['addItem']),
     alert(){
       console.log("alerta");
-    }
+    },
+    
   },
 };
 

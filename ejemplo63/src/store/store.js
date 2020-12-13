@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { getApi } from "@/services/apiConfig";
+import { Notification } from 'element-ui';
 
 Vue.use(Vuex)
 
@@ -30,6 +31,12 @@ export default new Vuex.Store({
     },
     mutandoCartItem(state,item){
       state.cartItems.push(item)
+    },
+    removeItemById(state,id){
+      let encontrado = state.cartItems.findIndex(result => result.id == id);
+      state.cartItems.splice(encontrado,1);
+      // otra menera de tantas
+      //state.cartItems = state.cartItems.filter(result => result.id !== id)
     }
   },
   actions: {
@@ -37,16 +44,27 @@ export default new Vuex.Store({
       let datos = await getApi('productList');
       commit('mutandoPokemones',datos);
     },
-    addItem({commit,getters}, item){
-      let buscarItem = getters.enviandoCartItems.find(result => result.id == item.id);
-      if(buscarItem){
+    addItem({commit,state}, item){
+      let buscarItem = state.cartItems.find(result => result.id == item.id);
+      console.log(buscarItem);
+      if(!buscarItem){
         commit('mutandoCartItem',item);
-        this.$notify({
+        Notification.success({
           title: 'Success',
           message: 'Se agregó correctamente',
           type: 'success'
         });
+      } else {
+        Notification.error({
+          title: 'Success',
+          message: 'No se puede agregar',
+          type: 'success'
+        });
+        console.log("error");
       }
+    },
+    itemToTrash({commit},id){
+      commit('removeItemById',id)
     }
   },
   modules: {
