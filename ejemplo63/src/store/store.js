@@ -1,12 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { getApi } from "@/services/apiConfig";
+import createPersistedState from "vuex-persistedstate";
 import * as shoppingCart from "./modules/shoppingCart";
+
+const persistedState = createPersistedState({
+  paths: ['shoppingCart.cartItems']
+})
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
+  plugins: [persistedState],
   state: {
     pokemones: [],
     alert: null,
