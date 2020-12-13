@@ -18,7 +18,7 @@
           </b-nav-item-dropdown>
           <b-nav-item-dropdown text="Moneda" class="ml-md-2" right>
             <b-dropdown-item href="#">USD</b-dropdown-item>
-            <b-dropdown-item href="#">MXN</b-dropdown-item>
+            <b-dropdown-item href="#">CLP</b-dropdown-item>
           </b-nav-item-dropdown>
           
           <b-nav-item class="ml-md-2" to="/"> Home </b-nav-item>
@@ -50,7 +50,9 @@ import { mapGetters } from "vuex";
 export default {
   components: { CartPopover },
   computed: {
-    ...mapGetters(['totalCartItems'])    
+    ...mapGetters({
+       totalCartItems: 'shoppingCart/totalCartItems', 
+    })    
   },
 }  
 </script>

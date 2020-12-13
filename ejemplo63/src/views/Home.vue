@@ -66,7 +66,7 @@
                   </div>
                   <div class="mt-2 d-flex justify-content-between">
                     <div class="pokemon-price">
-                      $ <b>{{poke.prices.mxn}}</b> <small>CLP</small>
+                      $ <b>{{poke.prices.clp}}</b> <small>CLP</small>
                     </div>
                     <div class="pokemon-rating">
                       <RatingComponent 
@@ -121,10 +121,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['enviandoPokemones', 'totalCartItems'])  
+    ...mapGetters({
+      enviandoPokemones: 'enviandoPokemones',
+      totalCartItems: 'shoppingCart/totalCartItems'
+    })  
   },
   methods: {
-    ...mapActions(['addItem']),
+    ...mapActions({
+      addItem: 'shoppingCart/addItem'
+    }),
     alert(){
       console.log("alerta");
     },

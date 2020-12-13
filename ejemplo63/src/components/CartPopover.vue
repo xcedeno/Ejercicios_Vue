@@ -37,7 +37,7 @@
                 <div class="">
                   <p class="mb-0 prices"> 
                     <span class="total-price"> 
-                      ${{ item.prices.mxn }} 
+                      ${{ item.prices.clp }} 
                       {{ getCurrency.content }}
                     </span>
                   </p>
@@ -63,12 +63,12 @@
         <div class="cart-options">
           <template v-if="totalCartItems > 0">
             <p class="text-right"> 
-              <span class="subtotal-price"> 
-                ${{ total.subtotal }}
+              <!-- <span class="subtotal-price"> 
+                ${{ enviandoTotal.subtotal }}
                 {{ getCurrency.content }}
-              </span>
+              </span> -->
               <span class="total-price"> 
-                ${{ total.total }}
+               Total mas Impuestos: ${{ enviandoTotal.total }}
                 {{ getCurrency.content }}
               </span>
             </p>
@@ -120,7 +120,12 @@ export default {
   },
   
   computed: {
-    ...mapGetters(['enviandoCartItems', 'totalCartItems', 'cartStatus']),
+    ...mapGetters({
+      enviandoCartItems: 'shoppingCart/enviandoCartItems', 
+      totalCartItems: 'shoppingCart/totalCartItems', 
+      cartStatus: 'shoppingCart/cartStatus', 
+      enviandoTotal: 'shoppingCart/enviandoTotal'
+    }),
     getCurrency(){
       return { 
         id: 'CLP',
@@ -130,7 +135,10 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['itemToTrash'])
+    ...mapActions({
+      itemToTrash: 'shoppingCart/itemToTrash',
+      deleteAll: 'shoppingCart/deleteAll'
+    }),
   },
 }
 </script>
