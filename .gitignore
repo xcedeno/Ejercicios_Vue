@@ -278,3 +278,4 @@ yarn-error.log*
 *.sln
 *.sw?
 sala1.json
+ejemplo65-firebase/src/config/firebaseConfig.js
