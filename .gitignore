@@ -258,6 +258,7 @@ ejemplo65-firebase/node_modules
 ejemplo65-firebase/.DS_Store
 ejemplo65-firebase/dist
 ejemplo65-firebase/src/config/
+ejemplo65-firebase/src/functions/
 
 # local env files
 .env.local
@@ -278,4 +279,4 @@ yarn-error.log*
 *.sln
 *.sw?
 sala1.json
-ejemplo65-firebase/src/config/firebaseConfig.js
+firebaseConfig.js
