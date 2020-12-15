@@ -254,10 +254,10 @@ ejemplo63/dist
 ejemplo63/src/config/
 
 # carpeta 
-ejemplo/node_modules
-ejemplo/.DS_Store
-ejemplo/dist
-ejemplo/src/config/
+ejemplo65/node_modules
+ejemplo65/.DS_Store
+ejemplo65/dist
+ejemplo65/src/config/
 
 # local env files
 .env.local
