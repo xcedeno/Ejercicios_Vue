@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/// <reference types="Cypress" />
 
 describe('My First Test', () => {
 it('Visitando la pagina', () => {
