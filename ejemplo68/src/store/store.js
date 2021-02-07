@@ -10,7 +10,9 @@ export default new Vuex.Store({
 
   },
   getters: {
-  
+    enviandoJuegos(state){
+      return state.juegos;
+    }
   },
   mutations: {
     mutandoJuegos(state,datos) {
