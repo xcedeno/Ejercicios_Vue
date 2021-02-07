@@ -1,15 +1,15 @@
 <template>
   <div>
-
+    <lista-opiniones></lista-opiniones>
   </div>
 </template>
 
 <script>
+import ListaOpiniones from '@/components/ListaOpiniones.vue'
 export default {
-    name: 'Opiniones'
+  name: 'Opiniones',
+  components: { 
+    ListaOpiniones 
+  },
 }
 </script>
-
-<style>
-
-</style>

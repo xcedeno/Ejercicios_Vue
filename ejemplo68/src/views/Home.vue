@@ -18,7 +18,7 @@
           </div>
         </div>
         <!-- modal -->
-        <div class="modal fade" :id="'modal-'+index" tabindex="-1" :aria-labelledby="'exampleModalLabel'+index" aria-hidden="true">
+        <div class="modal fade" :id="'modal-'+index" tabindex="-1" :aria-labelledby="'exampleModalLabel'+index" aria-hidden="true" ref="modalOpinion">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardarOpinion(juego,index)">Guardar</button>
                 </div>
               </div>
             </div>
@@ -56,11 +56,28 @@ export default {
   data() {
     return {
       nombre: '',
-      opiniones: ''
+      opiniones: '',
     }
   },
   computed: {
     ...mapGetters(['enviandoJuegos']),
+  },
+  methods: {
+    guardarOpinion(juego){
+      if (this.nombre && this.opiniones) {
+        let opinionUser = {
+          nombre: this.nombre,
+          opinion: this.opiniones,
+          juego: juego
+        };
+        this.$store.dispatch('guardandoOpinion',opinionUser);
+        alert("Opinion agrega exitosamente");
+        this.nombre = "";
+        this.opiniones = "";
+      } else {
+        alert("Error al ingresar los datos.");
+      }
+    }
   }
 }
 </script>
