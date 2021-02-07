@@ -18,8 +18,8 @@
               <td v-text="item.nombre"></td>
               <td v-text="item.juego.name"></td>
               <td v-text="item.opinion"></td>
-              <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-              <td><button type="button" class="btn btn-info">Editar</button></td>
+              <td><button type="button" class="btn btn-danger" @click="eliminando(index)">Eliminar</button></td>
+              <td><button type="button" class="btn btn-info" @click="editando(item)">Editar</button></td>
             </tr>
           </tbody>
         </table>
@@ -37,6 +37,17 @@ export default {
   name: 'ListaAdministrada',
   computed: {
     ...mapGetters(['enviandoOpiniones']),
+  },
+  methods: {
+    eliminando(index){
+      let resultado = confirm("Seguro que desea eliminar");
+      if (resultado) {
+        this.$store.dispatch('eliminarOpinion',index);
+      }
+    },
+    editando(item){
+      this.$router.push({name: 'Editando', params: {id: item.juego.id}});
+    }
   }
 }
 </script>
