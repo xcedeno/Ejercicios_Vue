@@ -68,10 +68,11 @@ export default {
         let opinionUser = {
           nombre: this.nombre,
           opinion: this.opiniones,
-          juego: juego
+          juego: juego,
+          id: Math.floor((Math.random() * 100) + 1)
         };
         this.$store.dispatch('guardandoOpinion',opinionUser);
-        alert("Opinion agrega exitosamente");
+        alert("Opinión agrega exitosamente");
         this.nombre = "";
         this.opiniones = "";
       } else {

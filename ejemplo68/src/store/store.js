@@ -24,10 +24,23 @@ export default new Vuex.Store({
       state.juegos = datos.results;
     },
     mutandoOpiniones(state, dataOpinion){
+      let id = 1;
+      while (id !== dataOpinion.id) {
+        id = Math.floor((Math.random() * 100) + 1);
+      }
+      dataOpinion.id = id;
       state.opiniones.push(dataOpinion);
     },
     borrarOpinion(state,index){
       state.opiniones.splice(index,1);
+    },
+    editandoOpinion(state,editado){
+      let resultado = state.opiniones.find(valor => valor.id === editado.id);
+      if (resultado !== undefined) {
+        resultado = editado;
+      } else {
+        alert("No se puede editar");
+      }
     }
   },
   actions: {
@@ -42,8 +55,8 @@ export default new Vuex.Store({
     eliminarOpinion({commit}, index){
       commit('borrarOpinion',index);
     },
-    guardandoEdicion(context,editado){
-      console.log(editado);
+    guardandoEdicion({commit},editado){
+      commit('editandoOpinion',editado)
     }
   }
 })

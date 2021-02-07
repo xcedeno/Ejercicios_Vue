@@ -46,7 +46,7 @@ export default {
       }
     },
     editando(item){
-      this.$router.push({name: 'Editando', params: {id: item.juego.id}});
+      this.$router.push({name: 'Editando', params: {id: item.id}});
     }
   }
 }
