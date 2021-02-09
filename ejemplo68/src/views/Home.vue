@@ -14,7 +14,7 @@
             <li class="list-group-item">Updated: {{Intl.DateTimeFormat('CLP').format(new Date(juego.updated))}}</li>
           </ul>
           <div class="card-body text-center">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="'#modal-'+index">Opinar</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="'#modal-'+index" :data-cy="'opinando'+index">Opinar</button>
           </div>
         </div>
         <!-- modal -->
@@ -29,16 +29,16 @@
                 <div class="modal-body">
                   <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Evan You" v-model="nombre">
+                    <input type="text" class="form-control" :id="'nombre'+index" placeholder="Evan You" v-model="nombre">
                   </div>
                   <div class="mb-3">
                     <label for="opiniones" class="form-label">Opiniones</label>
-                    <textarea class="form-control" id="opiniones" rows="3" v-model="opiniones" placeholder="Tu opinion debe ir aquí..."></textarea>
+                    <textarea class="form-control" :id="'opiniones'+index" rows="3" v-model="opiniones" placeholder="Tu opinion debe ir aquí..."></textarea>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardarOpinion(juego,index)">Guardar</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardarOpinion(juego,index)" :data-cy="'guardarOpinion'+index">Guardar</button>
                 </div>
               </div>
             </div>

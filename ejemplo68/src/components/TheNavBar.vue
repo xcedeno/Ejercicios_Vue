@@ -8,8 +8,8 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <router-link class="nav-link" :to="{name: 'Home'}">Home</router-link>
-                    <router-link class="nav-link" :to="{name: 'Opiniones'}">Opiniones</router-link>
-                    <router-link class="nav-link" :to="{name: 'Administracion'}">Administración</router-link>
+                    <router-link class="nav-link" data-cy="opinionesClick" :to="{name: 'Opiniones'}">Opiniones</router-link>
+                    <router-link class="nav-link" data-cy="administraClick" :to="{name: 'Administracion'}">Administración</router-link>
                 </div>
             </div>
         </div>
