@@ -46,7 +46,7 @@ export default {
     guardando(){
       let juegoEditado = {
         nombre: this.juegoEditar.nombre,
-        comentario: this.juegoEditar.opinion,
+        opinion: this.juegoEditar.opinion,
         juego: this.juegoEditar.juego,
         id: this.juegoEditar.id
       };

@@ -37,7 +37,8 @@ export default new Vuex.Store({
     editandoOpinion(state,editado){
       let resultado = state.opiniones.find(valor => valor.id === editado.id);
       if (resultado !== undefined) {
-        resultado = editado;
+        resultado.nombre = editado.nombre;
+        resultado.opinion = editado.opinion;
       } else {
         alert("No se puede editar");
       }
