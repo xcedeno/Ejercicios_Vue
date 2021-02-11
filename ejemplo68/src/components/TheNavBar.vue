@@ -18,10 +18,6 @@
 
 <script>
 export default {
-
+    name: "TheNavBar"
 }
 </script>
-
-<style>
-
-</style>

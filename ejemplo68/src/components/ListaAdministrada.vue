@@ -8,7 +8,7 @@
             <th>#</th>
             <th>Persona</th>
             <th>Juego</th>
-            <th>Opinion</th>
+            <th>Opinión</th>
             <th></th>
             <th></th>
           </thead>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="alert alert-danger mt-5" role="alert" v-else data-cy="sinAdministrar">
-      No existen opinones por administrar.
+      No existen opiniones para administrar.
     </div>
   </div>
 </template>
