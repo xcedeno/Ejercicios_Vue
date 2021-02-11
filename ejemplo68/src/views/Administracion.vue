@@ -5,9 +5,12 @@
 </template>
 
 <script>
-import ListaAdministrada from '../components/ListaAdministrada.vue'
+import ListaAdministrada from '../components/ListaAdministrada.vue';
+
 export default {
   name: 'Administracion',
-  components: { ListaAdministrada }
+  components: { 
+    ListaAdministrada 
+  }
 }
 </script>

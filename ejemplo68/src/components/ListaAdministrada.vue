@@ -5,12 +5,14 @@
       <div class="table-responsive">
         <table class="table table-hover">
           <thead class="table-light">
-            <th>#</th>
-            <th>Persona</th>
-            <th>Juego</th>
-            <th>Opinión</th>
-            <th></th>
-            <th></th>
+            <tr>
+              <th>#</th>
+              <th>Persona</th>
+              <th>Juego</th>
+              <th>Opinión</th>
+              <th></th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
             <tr v-for="(item,index) in enviandoOpiniones" :key="index">
