@@ -33,7 +33,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="opiniones" class="form-label">Opiniones</label>
-                    <textarea class="form-control" :id="'opiniones'+index" rows="3" v-model="opiniones" placeholder="Tu opinion debe ir aquí..."></textarea>
+                    <textarea class="form-control" :id="'opiniones'+index" rows="3" v-model="opiniones" placeholder="Tu opinión debe ir aquí..."></textarea>
                   </div>
                 </div>
                 <div class="modal-footer">
