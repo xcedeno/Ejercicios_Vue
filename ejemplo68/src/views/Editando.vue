@@ -17,7 +17,7 @@
     </div>
     <div v-else>
       <div class="alert alert-danger mt-5 text-center" role="alert">
-        La opinion que deseas editar no exste.
+        La opinión que deseas editar no existe
         <button type="button" class="btn btn-primary" @click="$router.push({name: 'Administracion'})">Regresar</button>
       </div>
     </div>
@@ -56,7 +56,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
