@@ -7,6 +7,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
+                    <!-- Se utiliza el router link para sustituir las etiquetas "a", haciendo el llamado a las rutas por nombre, el cual, se agregara posteriormente en el archivo de router -->
                     <router-link class="nav-link" :to="{name: 'Home'}"><font-awesome-icon :icon="['fas', 'home']" /> Home</router-link>
                     <router-link class="nav-link" data-cy="opinionesClick" :to="{name: 'Opiniones'}"><font-awesome-icon :icon="['fas', 'comments']" /> Opiniones</router-link>
                     <router-link class="nav-link" data-cy="administraClick" :to="{name: 'Administracion'}"><font-awesome-icon :icon="['fas', 'users-cog']" /> Administración</router-link>

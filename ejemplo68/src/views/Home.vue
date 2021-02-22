@@ -38,7 +38,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardarOpinion(juego,index)" :data-cy="'guardarOpinion'+index">Guardar</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardarOpinion(juego)" :data-cy="'guardarOpinion'+index">Guardar</button>
                 </div>
               </div>
             </div>
@@ -57,6 +57,7 @@ export default {
     return {
       nombre: '',
       opiniones: '',
+      dataAPI: []
     }
   },
   computed: {
@@ -79,7 +80,12 @@ export default {
         alert("Error al ingresar los datos.");
       }
     }
-  }
+  },
+  async created() {
+    let result = await fetch('https://api.rawg.io/api/games');
+    let json = await result.json();
+    this.dataAPI = json.results;
+  },
 }
 </script>
 

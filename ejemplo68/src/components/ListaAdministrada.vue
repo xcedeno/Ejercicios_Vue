@@ -37,6 +37,20 @@
 import { mapGetters } from "vuex";
 export default {
   name: 'ListaAdministrada',
+  data() {
+    return {
+      dataOpinion: [
+        {
+          nombre: 'Alison',
+          juego: {
+            name: 'GTAV',
+          },
+          opinion: "consequuntur autem libero",
+          id: 111,
+        }
+      ]
+    }
+  },
   computed: {
     ...mapGetters(['enviandoOpiniones']),
   },
