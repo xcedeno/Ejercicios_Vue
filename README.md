@@ -28,6 +28,16 @@ ncu -u
 npx http-server ./dist/
 ```
 
+## Usando servidor local para json
+- Instalacion de json-server
+  ```bash
+   npm install -g json-server
+  ```
+- Levanando el servidor local. Crear archivo json con el nombre db
+  ```bash
+  json-server db.json
+  ```
+
 ## Libreria para monedas: Accounting.js
 
 * [Repositorio](http://openexchangerates.github.io/accounting.js/).
