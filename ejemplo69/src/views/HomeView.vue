@@ -15,6 +15,16 @@
 <script>
 export default {
   name: "HomeView",
+  data() {
+    return {
+      items: [
+        {
+          text: "Home",
+          href: "/",
+        },
+      ],
+    };
+  },
   components: {},
 };
 </script>
