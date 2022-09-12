@@ -12,8 +12,7 @@
 <script>
 import TareaComponent from './components/TareaComponent.vue';
 import ListaTareas from './components/ListaTareas.vue';
-import { bus } from "./main.js";
-import { db } from "./main.js";
+import { bus, db } from "./main.js";
 
 export default {
   name: 'App',
@@ -31,7 +30,7 @@ export default {
   created() {
     bus.$on('contando',(dato)=>{
       this.numtareas = dato;
-    }),
+    })
     db.collection('tareas').orderBy('creado').onSnapshot((resul)=>{
       this.tareas = [];
       this.numtareas = 0;

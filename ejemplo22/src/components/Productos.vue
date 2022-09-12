@@ -34,9 +34,8 @@ export default {
             let valor = this.elCarro.find((produc => produc.id == this.producto.id))
             if (valor) {
                 return true
-            }else {
-                return false
             }
+            return false
         }
     },  
 }

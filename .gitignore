@@ -2,6 +2,9 @@
 node_modules
 .DS_Store
 /dist
+svgo.config.js
+.markdownlint.yaml
+.trunk
 
 # carpeta 1_2
 ejemplo1_2/node_modules
