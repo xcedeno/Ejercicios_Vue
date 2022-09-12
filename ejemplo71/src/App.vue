@@ -15,6 +15,7 @@ export default {
   },
   beforeCreate(){
     this.$store.dispatch('getInfoHome');
+    this.$store.dispatch('getEquipos');
   }
 };
 </script>

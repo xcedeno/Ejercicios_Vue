@@ -9,6 +9,8 @@ export default new Vuex.Store({
   state: {
     planes: [],
     opiniones: [],
+    pagedResult: {},
+    productos: []
   },
   getters: {
     getPlanes(state) {
@@ -17,6 +19,12 @@ export default new Vuex.Store({
     getOpiniones(state) {
       return state.opiniones;
     },
+    getPagedResult(state){
+      return state.pagedResult;
+    },
+    getProductos(state){
+      return state.productos;
+    }
   },
   mutations: {
     setPlanes(state, planesIn) {
@@ -25,6 +33,12 @@ export default new Vuex.Store({
     setOpiniones(state, opinionesIn) {
       state.opiniones = opinionesIn;
     },
+    setPageResult(state, pageResultIn){
+      state.pagedResult = pageResultIn;
+    },
+    setProductos(state,productosIn){
+      state.productos = productosIn;
+    }
   },
   actions: {
     async getInfoHome({ commit }) {
@@ -36,6 +50,12 @@ export default new Vuex.Store({
       commit("setPlanes", planes);
       commit("setOpiniones", opiniones);
     },
+    async getEquipos({commit}){
+      const urlBase = "equipos.json";
+
+      const { data: {pagedResult, productos} } = await axios.get(urlBase);
+      commit("setProductos",productos);
+      commit("setPageResult",pagedResult);
+    }
   },
-  modules: {},
 });
