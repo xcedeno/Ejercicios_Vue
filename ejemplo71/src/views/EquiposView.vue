@@ -2,48 +2,7 @@
   <b-container fluid>
     <b-row>
       <b-col cols="3">
-        <section class="carro">
-          <p class="carro__title">Bolsa de Compras BIG MOBILE</p>
-          <hr class="carro__line" />
-          <section>
-            <div class="carro__productos">
-              <div>
-                <img src="https://placeholder.pics/svg/50x50" alt="imagen" />
-              </div>
-              <div>
-                <p>nombre producto</p>
-                <p>Precio</p>
-              </div>
-            </div>
-            <div class="carro__productos">
-              <div>
-                <img src="https://placeholder.pics/svg/50x50" alt="imagen" />
-              </div>
-              <div>
-                <p>nombre producto</p>
-                <p>Precio</p>
-              </div>
-            </div>
-          </section>
-          <hr class="carro__line" />
-          <section>
-            <div class="carro__final">
-              <p>SubTotal Productos</p>
-              <p>$198204</p>
-            </div>
-            <div class="carro__final">
-              <p>Descuentos</p>
-              <p>$22822</p>
-            </div>
-            <div class="carro__final">
-              <p>TOTAL</p>
-              <p class="fs-4 text-primary">$135564</p>
-            </div>
-          </section>
-          <div class="text-center">
-            <b-button class="w-75" variant="primary">Pagar</b-button>
-          </div>
-        </section>
+        <CardComponent />
       </b-col>
       <b-col cols="9">
         <b-row>
@@ -81,7 +40,7 @@
                 </div>
               </b-card-body>
               <div class="text-center">
-                <b-button href="#" variant="primary">Agregar</b-button>
+                <b-button href="#" variant="primary" @click="addProduct(producto.id)">Agregar</b-button>
               </div>
             </b-card>
           </b-card-group>
@@ -103,6 +62,8 @@
 </template>
 
 <script>
+import CardComponent from '../components/CardComponent.vue';
+
 export default {
   name: "EquiposView",
   data() {
@@ -112,10 +73,21 @@ export default {
       currentPage: 1,
     };
   },
+  components: {
+    CardComponent,
+  },
   computed: {
     getProductosFinal() {
       return this.$store.getters.getProductos;
     },
+    getCardWithProducts(){
+      return this.$store.getters.getCardProducts;
+    }
+  },
+  methods: {
+    addProduct(idProduct){
+      this.$store.dispatch("addingProduct",idProduct);
+    }
   },
 };
 </script>
@@ -165,40 +137,5 @@ export default {
 .pagination-menu {
   margin-top: 20px;
   margin-left: 10px;
-}
-.carro {
-  margin-top: 90px;
-
-  &__line {
-    border: 2px solid black;
-    opacity: 1;
-  }
-
-  &__title {
-    font-weight: bold;
-    margin-bottom: -5px;
-  }
-
-  &__productos {
-    display: grid;
-    grid-template-columns: auto auto;
-    margin-top: 5px;
-    justify-content: space-evenly;
-
-    div:last-child {
-      p:last-child {
-        line-height: 0.8;
-        margin-top: -5px;
-      }
-    }
-  }
-
-  &__final {
-    display: grid;
-    grid-template-columns: auto auto;
-    margin-top: 5px;
-    justify-content: space-between;
-    font-weight: bold;
-  }
 }
 </style>
