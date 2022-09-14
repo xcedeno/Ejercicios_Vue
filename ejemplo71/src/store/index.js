@@ -23,31 +23,24 @@ export default new Vuex.Store({
     getOpiniones(state) {
       return state.opiniones;
     },
-    getPagedResult(state){
+    getPagedResult(state) {
       return state.pagedResult;
     },
-    getProductos(state){
+    getProductos(state) {
       return state.productos;
     },
-    getCardProducts(state){
+    getCardProducts(state) {
       return state.card;
     },
-    getSubTotalCard(state){
-      return state.card.reduce((previ,curre)=>{
-        state.subTotal = previ+curre.precio_promo;
-        return state.subTotal},0)
+    getSubTotalCard(state) {
+      return state.subTotal;
     },
-    getDescuento(state){
-      if(state.subTotal < 100000){
-        return Math.round(state.subTotal - (state.subTotal*0.05))
-      }
-      return Math.round(state.subTotal - (state.subTotal*0.07))
+    getDescuento(state) {
+      return state.descuento;
     },
-    getTotalCard(state){
-      return state.card.reduce((previ,curre)=>{
-        state.total = previ+curre.precio_promo;
-        return state.total},0)
-    }
+    getTotalCard(state) {
+      return state.total;
+    },
   },
   mutations: {
     setPlanes(state, planesIn) {
@@ -56,16 +49,33 @@ export default new Vuex.Store({
     setOpiniones(state, opinionesIn) {
       state.opiniones = opinionesIn;
     },
-    setPageResult(state, pageResultIn){
+    setPageResult(state, pageResultIn) {
       state.pagedResult = pageResultIn;
     },
-    setProductos(state,productosIn){
+    setProductos(state, productosIn) {
       state.productos = productosIn;
     },
-    setCardProducts(state,productId){
-      const productoToAdd = state.productos.find(product => product.id === productId);
+    setCardProducts(state, productId) {
+      const productoToAdd = state.productos.find(
+        (product) => product.id === productId
+      );
       state.card.push(productoToAdd);
-    }
+    },
+    setSubtotal(state) {
+      state.subTotal = state.card.reduce((previ, curre) => {
+        state.subTotal = previ + curre.precio_promo;
+        return state.subTotal;
+      }, 0);
+    },
+    setDescuento(state) {
+      state.descuento =
+        state.subTotal < 100000
+          ? Math.round(state.subTotal * 0.05)
+          : Math.round(state.subTotal * 0.07);
+    },
+    setTotal(state) {
+      state.total = state.subTotal - state.descuento;
+    },
   },
   actions: {
     async getInfoHome({ commit }) {
@@ -77,15 +87,20 @@ export default new Vuex.Store({
       commit("setPlanes", planes);
       commit("setOpiniones", opiniones);
     },
-    async getEquipos({commit}){
+    async getEquipos({ commit }) {
       const urlBase = "equipos.json";
 
-      const { data: {pagedResult, productos} } = await axios.get(urlBase);
-      commit("setProductos",productos);
-      commit("setPageResult",pagedResult);
+      const {
+        data: { pagedResult, productos },
+      } = await axios.get(urlBase);
+      commit("setProductos", productos);
+      commit("setPageResult", pagedResult);
     },
-    addingProduct({commit},producId){
-      commit("setCardProducts",producId);
-    }
+    addingProduct({ commit }, producId) {
+      commit("setCardProducts", producId);
+      commit("setSubtotal");
+      commit("setDescuento");
+      commit("setTotal");
+    },
   },
 });

@@ -21,7 +21,7 @@
       </div>
       <div class="carro__final">
         <p>Descuentos</p>
-        <p>$22822</p>
+        <p>${{getDescuento}}</p>
       </div>
       <div class="carro__final">
         <p>TOTAL</p>
@@ -40,7 +40,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: "CardComponent",
   computed: {
-    ...mapGetters(["getCardProducts","getSubTotalCard","getTotalCard"]),
+    ...mapGetters(["getCardProducts","getSubTotalCard","getTotalCard","getDescuento"]),
   },
 };
 </script>

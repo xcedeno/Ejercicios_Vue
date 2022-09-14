@@ -80,9 +80,6 @@ export default {
     getProductosFinal() {
       return this.$store.getters.getProductos;
     },
-    getCardWithProducts(){
-      return this.$store.getters.getCardProducts;
-    }
   },
   methods: {
     addProduct(idProduct){
