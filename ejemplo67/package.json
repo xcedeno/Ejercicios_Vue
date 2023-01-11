@@ -38,7 +38,7 @@
     "babel-plugin-istanbul": "^6.0.0",
     "cross-env": "^6.0.3",
     "istanbul-lib-coverage": "^3.0.0",
-    "knex": "^0.21.13",
+    "knex": "^2.4.0",
     "lint-staged": "^8.2.1",
     "nyc": "^15.1.0",
     "vue-template-compiler": "^2.6.10"
